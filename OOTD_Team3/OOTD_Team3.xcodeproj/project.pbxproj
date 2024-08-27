@@ -16,6 +16,7 @@
 		F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BC2C7D9324007A608C /* HomeViewController.swift */; };
 		F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BE2C7D932B007A608C /* MyViewController.swift */; };
 		F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C02C7D9334007A608C /* ClosetViewController.swift */; };
+		F67806C62C7D9F37007A608C /* LipsOOTDChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C52C7D9F37007A608C /* LipsOOTDChatBotViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F67806BC2C7D9324007A608C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F67806BE2C7D932B007A608C /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		F67806C02C7D9334007A608C /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
+		F67806C52C7D9F37007A608C /* LipsOOTDChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipsOOTDChatBotViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				F67806AF2C7D92ED007A608C /* Assets.xcassets */,
 				F67806B12C7D92ED007A608C /* LaunchScreen.storyboard */,
 				F67806B42C7D92ED007A608C /* Info.plist */,
+				F67806C52C7D9F37007A608C /* LipsOOTDChatBotViewController.swift */,
 			);
 			path = OOTD_Team3;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67806C62C7D9F37007A608C /* LipsOOTDChatBotViewController.swift in Sources */,
 				F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */,
 				F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */,
 				F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */,
