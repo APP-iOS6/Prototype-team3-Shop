@@ -1,14 +1,15 @@
+
 import UIKit
 
 class HomeViewController: UIViewController {
     
     private var collectionView: UICollectionView!
-    private let images = ["image1", "image2", "image3", "image4"]
+    private let images = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8", "image9", "image10"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-
+        
         setupLayout()  // 레이아웃 설정
     }
     
@@ -37,34 +38,34 @@ class HomeViewController: UIViewController {
         
         // collectionView 레이아웃 설정
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: hstackView.bottomAnchor, constant: 5),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            collectionView.topAnchor.constraint(equalTo: hstackView.bottomAnchor, constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5)
         ])
     }
-    
+
     // VStack 생성
     private func vimageStack() -> UIStackView {
         let vstackView = UIStackView()
         vstackView.axis = .vertical
         vstackView.alignment = .center
         vstackView.distribution = .equalSpacing
-        vstackView.spacing = 10
+        vstackView.spacing = 15
         
         // 로고
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: "Image")
         logoImageView.contentMode = .scaleAspectFit
-        logoImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         vstackView.addArrangedSubview(logoImageView)
         
         // 검색창
         let textField = UITextField()
         textField.placeholder = "OOTD 검색"
         textField.borderStyle = .roundedRect
-        textField.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        textField.widthAnchor.constraint(equalToConstant: 350).isActive = true
         textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         vstackView.addArrangedSubview(textField)
         
@@ -73,7 +74,7 @@ class HomeViewController: UIViewController {
         chatImageView.image = UIImage(named: "AIImage")
         chatImageView.contentMode = .scaleAspectFit
         chatImageView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        chatImageView.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        chatImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
         chatImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentSheetViewController))
@@ -87,24 +88,12 @@ class HomeViewController: UIViewController {
     
     @objc private func presentSheetViewController() {
         let sheetViewController = LipsOOTDChatBotViewController()
-//        sheetViewController.view.backgroundColor = .white
         
-        // 시트의 내용을 여기에 추가합니다.
-//        let label = UILabel()
-//        label.text = "AI 채팅 시트"
-//        label.textAlignment = .center
-//        sheetViewController.view.addSubview(label)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            label.centerXAnchor.constraint(equalTo: sheetViewController.view.centerXAnchor),
-//            label.centerYAnchor.constraint(equalTo: sheetViewController.view.centerYAnchor)
-//        ])
-
         if let sheet = sheetViewController.sheetPresentationController {
             sheet.detents = [.large(), .large()]
             sheet.prefersGrabberVisible = true
         }
-
+        
         present(sheetViewController, animated: true, completion: nil)
     }
     
@@ -116,7 +105,7 @@ class HomeViewController: UIViewController {
         hstackView.distribution = .fillEqually
         hstackView.spacing = 10
         
-        let categories = ["긱시크", "스트리트", "포멀", "캐주얼"]
+        let categories = ["긱시크", "스트릿", "포멀", "캐주얼"]
         for category in categories {
             let button = UIButton(type: .system)
             button.setTitle(category, for: .normal)
@@ -125,11 +114,7 @@ class HomeViewController: UIViewController {
             button.layer.cornerRadius = 8
             button.addAction(UIAction { [weak button] _ in
                 guard let button = button else { return }
-                button.backgroundColor = .systemBlue
-            }, for: .touchUpInside)
-            button.addAction(UIAction { [weak button] _ in
-                guard let button = button else { return }
-                button.backgroundColor = .systemBrown
+                button.backgroundColor = .systemOrange
             }, for: .touchUpInside)
             hstackView.addArrangedSubview(button)
         }
@@ -142,13 +127,13 @@ class HomeViewController: UIViewController {
     private func collectionViewfunc() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(collectionViewCell.self, forCellWithReuseIdentifier: "ImageCell")
-        collectionView.backgroundColor = .brown
-        collectionView.layer.cornerRadius = 5
+        collectionView.backgroundColor = .systemGray5
+        collectionView.layer.cornerRadius = 10
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -172,7 +157,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - 20) / 2
+        let width = (collectionView.bounds.width - 30) / 2
         return CGSize(width: width, height: width)
     }
 }
@@ -211,4 +196,5 @@ class collectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: imageName)
     }
 }
+
 

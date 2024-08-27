@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8BDDB1572C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */; };
+		8BDDB1592C7E15DD0011A6F3 /* JSLookBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */; };
 		F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806A62C7D92EB007A608C /* AppDelegate.swift */; };
 		F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806A82C7D92EB007A608C /* SceneDelegate.swift */; };
 		F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806AA2C7D92EB007A608C /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipsOOTDChatBotViewController.swift; sourceTree = "<group>"; };
+		8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSLookBookViewController.swift; sourceTree = "<group>"; };
 		F67806A32C7D92EB007A608C /* OOTD_Team3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OOTD_Team3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67806A62C7D92EB007A608C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67806A82C7D92EB007A608C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				F67806BC2C7D9324007A608C /* HomeViewController.swift */,
 				F67806BE2C7D932B007A608C /* MyViewController.swift */,
 				F67806C02C7D9334007A608C /* ClosetViewController.swift */,
+				8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */,
 				8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */,
 			);
 			path = ViewControllers;
@@ -162,6 +165,7 @@
 				F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */,
 				F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */,
 				F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */,
+				8BDDB1592C7E15DD0011A6F3 /* JSLookBookViewController.swift in Sources */,
 				F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */,
 				F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */,
 				F67806BB2C7D9318007A608C /* OOTDViewController.swift in Sources */,
