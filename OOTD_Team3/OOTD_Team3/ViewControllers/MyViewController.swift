@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PersonViewController: UIViewController {
+class MyViewController: UIViewController {
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground

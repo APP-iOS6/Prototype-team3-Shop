@@ -17,20 +17,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        
         // 반복문 돌리려다 다같이 할거면 따로 만드는게 보기 좋을거 같아서 분리해서 만들었는데, 네이밍을 대충 지은거 같아서 변경필요하면 알려주세요
         let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
         
-        let heartViewController = HeartViewController()
-        heartViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart"), tag: 1)
+        let ootdViewController = OOTDViewController()
+        ootdViewController.tabBarItem = UITabBarItem(title: "오오티디", image: UIImage(systemName: "number"), tag: 1)
         
-        let starViewController = StarViewController()
-        starViewController.tabBarItem = UITabBarItem(title: "Star", image: UIImage(systemName: "star"), tag: 2)
+        let closetViewController = ClosetViewController()
+        closetViewController.tabBarItem = UITabBarItem(title: "옷장", image: UIImage(systemName: "hanger"), tag: 2)
         
-        let personViewController = PersonViewController()
-        personViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 3)
+        let myViewController = MyViewController()
+        myViewController.tabBarItem = UITabBarItem(title: "마이", image: UIImage(systemName: "person"), tag: 3)
         
        
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeViewController, heartViewController, starViewController, personViewController]
+        tabBarController.viewControllers = [homeViewController, ootdViewController, closetViewController, myViewController]
         
      
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)

@@ -12,10 +12,10 @@
 		F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806AA2C7D92EB007A608C /* ViewController.swift */; };
 		F67806B02C7D92ED007A608C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67806AF2C7D92ED007A608C /* Assets.xcassets */; };
 		F67806B32C7D92ED007A608C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F67806B22C7D92ED007A608C /* Base */; };
-		F67806BB2C7D9318007A608C /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BA2C7D9318007A608C /* HeartViewController.swift */; };
+		F67806BB2C7D9318007A608C /* OOTDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BA2C7D9318007A608C /* OOTDViewController.swift */; };
 		F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BC2C7D9324007A608C /* HomeViewController.swift */; };
-		F67806BF2C7D932B007A608C /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BE2C7D932B007A608C /* PersonViewController.swift */; };
-		F67806C12C7D9334007A608C /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C02C7D9334007A608C /* StarViewController.swift */; };
+		F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BE2C7D932B007A608C /* MyViewController.swift */; };
+		F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C02C7D9334007A608C /* ClosetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +26,10 @@
 		F67806AF2C7D92ED007A608C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F67806B22C7D92ED007A608C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F67806B42C7D92ED007A608C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F67806BA2C7D9318007A608C /* HeartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
+		F67806BA2C7D9318007A608C /* OOTDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDViewController.swift; sourceTree = "<group>"; };
 		F67806BC2C7D9324007A608C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		F67806BE2C7D932B007A608C /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
-		F67806C02C7D9334007A608C /* StarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
+		F67806BE2C7D932B007A608C /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		F67806C02C7D9334007A608C /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +76,10 @@
 		F67806C22C7D933D007A608C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F67806BA2C7D9318007A608C /* HeartViewController.swift */,
+				F67806BA2C7D9318007A608C /* OOTDViewController.swift */,
 				F67806BC2C7D9324007A608C /* HomeViewController.swift */,
-				F67806BE2C7D932B007A608C /* PersonViewController.swift */,
-				F67806C02C7D9334007A608C /* StarViewController.swift */,
+				F67806BE2C7D932B007A608C /* MyViewController.swift */,
+				F67806C02C7D9334007A608C /* ClosetViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */,
-				F67806BF2C7D932B007A608C /* PersonViewController.swift in Sources */,
+				F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */,
 				F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */,
 				F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */,
 				F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */,
-				F67806C12C7D9334007A608C /* StarViewController.swift in Sources */,
-				F67806BB2C7D9318007A608C /* HeartViewController.swift in Sources */,
+				F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */,
+				F67806BB2C7D9318007A608C /* OOTDViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

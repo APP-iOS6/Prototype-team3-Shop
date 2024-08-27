@@ -1,5 +1,5 @@
 //
-//  StarViewController.swift
+//  HeartViewController.swift
 //  OOTD_Team3
 //
 //  Created by wonhoKim on 8/27/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StarViewController: UIViewController {
+class OOTDViewController: UIViewController {
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
