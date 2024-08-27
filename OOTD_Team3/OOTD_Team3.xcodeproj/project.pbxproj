@@ -17,6 +17,8 @@
 		F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BE2C7D932B007A608C /* MyViewController.swift */; };
 		F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C02C7D9334007A608C /* ClosetViewController.swift */; };
 		F67806C62C7D9F37007A608C /* LipsOOTDChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C52C7D9F37007A608C /* LipsOOTDChatBotViewController.swift */; };
+		F67806CA2C7E1A45007A608C /* OOTDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C92C7E1A45007A608C /* OOTDItem.swift */; };
+		F67806CC2C7E1A52007A608C /* OOTDItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806CB2C7E1A52007A608C /* OOTDItemStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F67806BE2C7D932B007A608C /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		F67806C02C7D9334007A608C /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		F67806C52C7D9F37007A608C /* LipsOOTDChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipsOOTDChatBotViewController.swift; sourceTree = "<group>"; };
+		F67806C92C7E1A45007A608C /* OOTDItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDItem.swift; sourceTree = "<group>"; };
+		F67806CB2C7E1A52007A608C /* OOTDItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDItemStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				F67806B12C7D92ED007A608C /* LaunchScreen.storyboard */,
 				F67806B42C7D92ED007A608C /* Info.plist */,
 				F67806C52C7D9F37007A608C /* LipsOOTDChatBotViewController.swift */,
+				F67806C92C7E1A45007A608C /* OOTDItem.swift */,
+				F67806CB2C7E1A52007A608C /* OOTDItemStore.swift */,
 			);
 			path = OOTD_Team3;
 			sourceTree = "<group>";
@@ -157,12 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67806CC2C7E1A52007A608C /* OOTDItemStore.swift in Sources */,
 				F67806C62C7D9F37007A608C /* LipsOOTDChatBotViewController.swift in Sources */,
 				F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */,
 				F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */,
 				F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */,
 				F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */,
 				F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */,
+				F67806CA2C7E1A45007A608C /* OOTDItem.swift in Sources */,
 				F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */,
 				F67806BB2C7D9318007A608C /* OOTDViewController.swift in Sources */,
 			);
