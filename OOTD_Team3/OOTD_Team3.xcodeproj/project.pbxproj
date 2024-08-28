@@ -127,6 +127,14 @@
 			path = ItemDetailViewController;
 			sourceTree = "<group>";
 		};
+		8BDDB17A2C7ECB6C0011A6F3 /* OOTD */ = {
+			isa = PBXGroup;
+			children = (
+				F67806BA2C7D9318007A608C /* OOTDViewController.swift */,
+			);
+			path = OOTD;
+			sourceTree = "<group>";
+		};
 		F678069A2C7D92EB007A608C = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +173,7 @@
 				8BDDB1722C7EA8730011A6F3 /* TestViewControllers */,
 				8BDDB1732C7EA90B0011A6F3 /* StartingViewControllers */,
 				8BDDB1742C7EA97F0011A6F3 /* HomeViewControllers */,
-				F67806BA2C7D9318007A608C /* OOTDViewController.swift */,
+				8BDDB17A2C7ECB6C0011A6F3 /* OOTD */,
 				8BDDB1752C7EA9DF0011A6F3 /* ClosetViewControllers */,
 				F67806BE2C7D932B007A608C /* MyViewController.swift */,
 				8BDDB1762C7EAA620011A6F3 /* ItemDetailViewController */,

@@ -34,10 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let logoViewController = LogoViewController()
         logoViewController.modalPresentationStyle = .fullScreen
         
+        let navigationController = UINavigationController(rootViewController: logoViewController)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = logoViewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

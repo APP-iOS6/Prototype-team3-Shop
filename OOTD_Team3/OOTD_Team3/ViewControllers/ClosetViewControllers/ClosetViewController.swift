@@ -9,29 +9,56 @@ class ClosetViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         closetSetupLayout()
+        
+        // 버튼 추가
+        let aiFloatingButton = UIButton(type: .system)
+        aiFloatingButton.setTitle("CHAT", for: .normal)
+        aiFloatingButton.backgroundColor = .systemBrown
+        aiFloatingButton.setTitleColor(.white, for: .normal)
+        aiFloatingButton.layer.cornerRadius = 25
+        aiFloatingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        view.addSubview(aiFloatingButton)
+        
+        // 오토 레이아웃 설정
+        aiFloatingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            aiFloatingButton.widthAnchor.constraint(equalToConstant: 100),
+            aiFloatingButton.heightAnchor.constraint(equalToConstant: 50),
+            aiFloatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            aiFloatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+        
+        // 버튼을 가장 위로 가져오기
+        view.bringSubviewToFront(aiFloatingButton)
+    }
+    
+    // 버튼 액션
+    @objc private func buttonTapped() {
+        let chatViewController = LipsOOTDChatBotViewController()
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     // 오토 레이아웃 설정
     private func closetSetupLayout() {
-        let hstackView = hStack()
+        let titlevstackView = titleVStack()
         let collectionView = collectionViewfunc()  // 컬렉션 뷰
         let vstackView = vimageStack()  // 게시글 추가 버튼 2개 VStack
         
-        view.addSubview(hstackView)
+        view.addSubview(titlevstackView)
         view.addSubview(collectionView)
         view.addSubview(vstackView)
         
         // hstackView 레이아웃 설정
         NSLayoutConstraint.activate([
-            hstackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            hstackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            hstackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            hstackView.heightAnchor.constraint(equalToConstant: 60) // hstackView의 높이 설정
+            titlevstackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titlevstackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            titlevstackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            titlevstackView.heightAnchor.constraint(equalToConstant: 80) // hstackView의 높이 설정
         ])
         
         // collectionView 레이아웃 설정
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: hstackView.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: titlevstackView.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: vstackView.topAnchor, constant: -10)
@@ -46,13 +73,13 @@ class ClosetViewController: UIViewController {
         ])
     }
 
-    // HStack 생성
-    private func hStack() -> UIStackView {
-        let hstackView = UIStackView()
-        hstackView.axis = .horizontal
-        hstackView.alignment = .center
-        hstackView.distribution = .fill
-        hstackView.spacing = 10
+    // 타이틀, 세그먼트 버튼 VStack 생성
+    private func titleVStack() -> UIStackView {
+        let titlevstackView = UIStackView()
+        titlevstackView.axis = .vertical
+        titlevstackView.alignment = .center
+        titlevstackView.distribution = .fill
+        titlevstackView.spacing = 10
 
         let closetLabel = UILabel()
         closetLabel.text = "MY CLOSET"
@@ -60,11 +87,17 @@ class ClosetViewController: UIViewController {
         closetLabel.textColor = .brown
         closetLabel.contentMode = .center
         closetLabel.textAlignment = .center
+        titlevstackView.addArrangedSubview(closetLabel)
         
-        hstackView.addArrangedSubview(closetLabel)
+        // 나의 옷장 , 룩북 중 선택
+        let uploadTypeSegmentedControl = UISegmentedControl(items: ["옷장", "룩북"])
+        uploadTypeSegmentedControl.selectedSegmentIndex = 0
+        uploadTypeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        uploadTypeSegmentedControl.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        titlevstackView.addArrangedSubview(uploadTypeSegmentedControl)
         
-        hstackView.translatesAutoresizingMaskIntoConstraints = false
-        return hstackView
+        titlevstackView.translatesAutoresizingMaskIntoConstraints = false
+        return titlevstackView
     }
     
     // 컬렉션 뷰 생성

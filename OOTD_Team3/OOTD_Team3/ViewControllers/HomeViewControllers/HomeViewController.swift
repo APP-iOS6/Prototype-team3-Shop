@@ -6,11 +6,55 @@ class HomeViewController: UIViewController {
     private var collectionView: UICollectionView!
     private let images = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8", "image9", "image10"]
     
+    private let profileImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "cat") // 프로젝트에 추가된 이미지
+            imageView.contentMode = .scaleAspectFit
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.isHidden = true // 초기에는 숨김 상태
+            return imageView
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
+        // 버튼 추가
+        let chatfloatingButton = UIButton(type: .system)
+        chatfloatingButton.setTitle("NED 프로필", for: .normal)
+        chatfloatingButton.backgroundColor = .red
+        chatfloatingButton.setTitleColor(.white, for: .focused)
+        chatfloatingButton.layer.cornerRadius = 999
+        chatfloatingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        view.addSubview(chatfloatingButton)
+        view.addSubview(profileImageView)
+        chatfloatingButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 오토 레이아웃 설정
+        chatfloatingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chatfloatingButton.widthAnchor.constraint(equalToConstant: 100),
+            chatfloatingButton.heightAnchor.constraint(equalToConstant: 50),
+            chatfloatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            chatfloatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            profileImageView.bottomAnchor.constraint(equalTo: chatfloatingButton.topAnchor, constant: -10),
+            profileImageView.widthAnchor.constraint(equalToConstant: 200),
+            profileImageView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        // 버튼을 가장 위로 가져오기
+        view.bringSubviewToFront(chatfloatingButton)
         setupLayout()  // 레이아웃 설정
+    }
+    
+    // 버튼 액션
+    @objc private func buttonTapped() {
+        profileImageView.isHidden.toggle()
     }
     
     private func setupLayout() {
@@ -90,7 +134,7 @@ class HomeViewController: UIViewController {
         let sheetViewController = LipsOOTDChatBotViewController()
         
         if let sheet = sheetViewController.sheetPresentationController {
-            sheet.detents = [.large(), .large()]
+            sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
         }
         
