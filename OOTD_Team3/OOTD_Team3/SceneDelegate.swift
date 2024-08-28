@@ -11,34 +11,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
        
-        // 반복문 돌리려다 다같이 할거면 따로 만드는게 보기 좋을거 같아서 분리해서 만들었는데, 네이밍을 대충 지은거 같아서 변경필요하면 알려주세요
-        let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
+        let logoViewController = LogoViewController()
+        logoViewController.modalPresentationStyle = .fullScreen
         
-        let ootdViewController = OOTDViewController()
-        ootdViewController.tabBarItem = UITabBarItem(title: "오오티디", image: UIImage(systemName: "number"), tag: 1)
+        //let navigationController = UINavigationController(rootViewController: logoViewController)
         
-        let closetViewController = ClosetViewController()
-        closetViewController.tabBarItem = UITabBarItem(title: "옷장", image: UIImage(systemName: "hanger"), tag: 2)
+        //let home
+        let homeTabVc = HomeViewController()
         
-        let myViewController = MyViewController()
-        myViewController.tabBarItem = UITabBarItem(title: "마이", image: UIImage(systemName: "person"), tag: 3)
+        let naviagationVc = UINavigationController(rootViewController: homeTabVc)
         
-       
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeViewController, ootdViewController, closetViewController, myViewController]
-        
-     
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = tabBarController
+        window?.rootViewController = logoViewController
         window?.makeKeyAndVisible()
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
