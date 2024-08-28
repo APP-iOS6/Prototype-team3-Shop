@@ -166,15 +166,23 @@ class HomeViewController: UIViewController {
         return vstackView
     }
     
-    @objc private func presentSheetViewController() {
+    @objc private func presentSheetViewController(_ sender: UITapGestureRecognizer) {
+        guard let imageView = sender.view else { return }
         let sheetViewController = LipsOOTDChatBotViewController()
         
         if let sheet = sheetViewController.sheetPresentationController {
-            sheet.detents = [.large(), .large()]
+            sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
         }
-        
         present(sheetViewController, animated: true, completion: nil)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+                    imageView.alpha = 0.5 // 어두워짐
+                }) { _ in
+                    UIView.animate(withDuration: 0.1) {
+                        imageView.alpha = 1.0 // 밝아짐
+                    }
+                }
     }
     
     // HStack 생성
@@ -216,7 +224,7 @@ class HomeViewController: UIViewController {
         switch selectedCategory {
         case "ALL":
             filteredImages = allImages
-        case "BEST":
+        case "⭐️BEST":
             filteredImages = allImages.shuffled().prefix(6).map { $0 }
         case "상의":
             filteredImages = allImages.filter { $0.hasPrefix("1-") }
@@ -260,6 +268,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! collectionViewCell
+        //cell.homeViewController = self
         let imageName = filteredImages[indexPath.item]
         // 여기서 실제 상품명과 가격 정보를 설정. 예시로 임시 데이터를 사용
         cell.configure(with: imageName, title: "상품 \(indexPath.item + 1)", price: "₩\((indexPath.item + 1) * 10000)")
@@ -282,11 +291,20 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 // 컬렉션 뷰 셀
 class collectionViewCell: UICollectionViewCell {
+    weak var homeViewController: HomeViewController?
+    
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 5
+        
+        iv.isUserInteractionEnabled = true
+        let buyGesture = UITapGestureRecognizer(target: collectionViewCell.self, action: #selector(buyViewController))
+        iv.addGestureRecognizer(buyGesture)
+        
+        //imageView.addArrangedSubview(iv)
+        iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
@@ -305,6 +323,15 @@ class collectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         return label
     }()
+    
+    @objc private func buyViewController() {
+        guard let viewController = homeViewController else {
+                    return
+                }
+        
+        let buyViewController = ItemDetailesViewController()
+        viewController.navigationController?.pushViewController(buyViewController, animated: true)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

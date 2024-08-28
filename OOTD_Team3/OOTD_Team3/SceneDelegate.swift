@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        
         // 반복문 돌리려다 다같이 할거면 따로 만드는게 보기 좋을거 같아서 분리해서 만들었는데, 네이밍을 대충 지은거 같아서 변경필요하면 알려주세요
         let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
+        let homeNavigationViewController = UINavigationController(rootViewController: homeViewController)
+        homeNavigationViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
         
         let ootdViewController = OOTDViewController()
         ootdViewController.tabBarItem = UITabBarItem(title: "오오티디", image: UIImage(systemName: "number"), tag: 1)
@@ -29,16 +30,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeViewController, ootdViewController, closetViewController, myViewController]
+        tabBarController.viewControllers = [homeNavigationViewController, ootdViewController, closetViewController, myViewController]
         
         let logoViewController = LogoViewController()
         logoViewController.modalPresentationStyle = .fullScreen
         
-        let navigationController = UINavigationController(rootViewController: logoViewController)
+        //let navigationController = UINavigationController(rootViewController: logoViewController)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = navigationController
+        window?.rootViewController = logoViewController
         window?.makeKeyAndVisible()
     }
     
