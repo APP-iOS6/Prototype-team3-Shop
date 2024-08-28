@@ -13,18 +13,18 @@ class HomeViewController: UIViewController {
     private var filteredImages: [String] = []
     
     // 프로필 버튼 추가
-    let chatButton: UIButton = {
-        let chatfloatingButton = UIButton(type: .system)
-        chatfloatingButton.setTitle("TIDI's", for: .normal)
+    let profileButton: UIButton = {
+        let profilefloatingButton = UIButton(type: .system)
+        profilefloatingButton.setTitle("TIDI's", for: .normal)
 //        chatfloatingButton.titleLabel?.numberOfLines = 0
 //        chatfloatingButton.titleLabel?.textAlignment = .center
-        chatfloatingButton.setTitleColor(.white, for: .normal)
-        chatfloatingButton.titleLabel?.isHidden = true
-        chatfloatingButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        profilefloatingButton.setTitleColor(.white, for: .normal)
+        profilefloatingButton.titleLabel?.isHidden = true
+        profilefloatingButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         
-        chatfloatingButton.backgroundColor = .black
-        chatfloatingButton.layer.cornerRadius = 40
-        return chatfloatingButton
+        profilefloatingButton.backgroundColor = .black
+        profilefloatingButton.layer.cornerRadius = 40
+        return profilefloatingButton
     }()
     var isImageVisible = false
     
@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(lottieView)
-        view.addSubview(chatButton)
+        view.addSubview(profileButton)
         
         // Lottie 오토레이아웃
         lottieView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,19 +52,19 @@ class HomeViewController: UIViewController {
         
         
         // 프로필 오토레이아웃
-        chatButton.translatesAutoresizingMaskIntoConstraints = false
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            chatButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 280),
-            chatButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 125),
-            chatButton.widthAnchor.constraint(equalToConstant: 80),
-            chatButton.heightAnchor.constraint(equalToConstant: 80)
+            profileButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 280),
+            profileButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 125),
+            profileButton.widthAnchor.constraint(equalToConstant: 80),
+            profileButton.heightAnchor.constraint(equalToConstant: 80)
         ])
-        chatButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         filteredImages = allImages
         setupLayout()  // 레이아웃 설정
         // 버튼을 가장 위로 가져오기
-        view.bringSubviewToFront(chatButton)
+        view.bringSubviewToFront(profileButton)
         view.bringSubviewToFront(lottieView)
         lottieView.play()
     }
@@ -73,12 +73,12 @@ class HomeViewController: UIViewController {
     @objc private func buttonTapped() {
         if isImageVisible {
             // 이미지가 보이는 상태라면 이미지를 제거
-            chatButton.setBackgroundImage(nil, for: .normal)
-            chatButton.titleLabel?.isHidden = false
+            profileButton.setBackgroundImage(nil, for: .normal)
+            profileButton.titleLabel?.isHidden = false
         } else {
             // 이미지가 보이지 않는 상태라면 이미지를 추가
-            chatButton.setBackgroundImage(UIImage(named: "cat"), for: .normal)
-            chatButton.titleLabel?.isHidden = true
+            profileButton.setBackgroundImage(UIImage(named: "cat"), for: .normal)
+            profileButton.titleLabel?.isHidden = true
         }
         // 상태를 반전시킴
         isImageVisible.toggle()
