@@ -16,8 +16,8 @@ class HomeViewController: UIViewController {
     let profileButton: UIButton = {
         let profilefloatingButton = UIButton(type: .system)
         profilefloatingButton.setTitle("TIDI's", for: .normal)
-//        chatfloatingButton.titleLabel?.numberOfLines = 0
-//        chatfloatingButton.titleLabel?.textAlignment = .center
+        //        chatfloatingButton.titleLabel?.numberOfLines = 0
+        //        chatfloatingButton.titleLabel?.textAlignment = .center
         profilefloatingButton.setTitleColor(.white, for: .normal)
         profilefloatingButton.titleLabel?.isHidden = true
         profilefloatingButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
@@ -124,7 +124,7 @@ class HomeViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5)
         ])
     }
-
+    
     // VStack 생성
     private func vimageStack() -> UIStackView {
         let vstackView = UIStackView()
@@ -177,12 +177,12 @@ class HomeViewController: UIViewController {
         present(sheetViewController, animated: true, completion: nil)
         
         UIView.animate(withDuration: 0.1, animations: {
-                    imageView.alpha = 0.5 // 어두워짐
-                }) { _ in
-                    UIView.animate(withDuration: 0.1) {
-                        imageView.alpha = 1.0 // 밝아짐
-                    }
-                }
+            imageView.alpha = 0.5 // 어두워짐
+        }) { _ in
+            UIView.animate(withDuration: 0.1) {
+                imageView.alpha = 1.0 // 밝아짐
+            }
+        }
     }
     
     // HStack 생성
@@ -192,7 +192,7 @@ class HomeViewController: UIViewController {
         hstackView.alignment = .fill
         hstackView.distribution = .fillEqually
         hstackView.spacing = 5
-
+        
         for category in categories {
             let button = UIButton(type: .system)
             button.setTitle(category, for: .normal)
@@ -258,9 +258,8 @@ class HomeViewController: UIViewController {
     
 }
 
-//MARK: - 컬렉션뷰
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
 
-// 컬렉션 뷰 익스텐션 - 다시 보기
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredImages.count
@@ -268,9 +267,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! collectionViewCell
-        //cell.homeViewController = self
+        cell.homeViewController = self  // HomeViewController를 셀에 설정
+        
         let imageName = filteredImages[indexPath.item]
-        // 여기서 실제 상품명과 가격 정보를 설정. 예시로 임시 데이터를 사용
+        // 셀에 이미지와 제목 및 가격 정보를 설정
         cell.configure(with: imageName, title: "상품 \(indexPath.item + 1)", price: "₩\((indexPath.item + 1) * 10000)")
         return cell
     }
@@ -281,11 +281,27 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 5 // 아이템 간 간격 설정
-        }
-
+        return 5 // 아이템 간 간격 설정
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5) // 섹션 인셋 설정
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 셀이 선택되었을 때 ItemDetailesViewController로 화면 전환
+        let detailViewController = ItemDetailesViewController()
+        detailViewController.modalPresentationStyle = .fullScreen // 전체 화면 모달 전환
+        
+        // 네비게이션 방식으로 이동하는 경우 (UINavigationController 사용 시)
+        // navigationController?.pushViewController(detailViewController, animated: true)
+        
+        // 모달 방식으로 전환
+        present(detailViewController, animated: true, completion: nil)
     }
 }
 
@@ -301,7 +317,6 @@ class collectionViewCell: UICollectionViewCell {
         
         iv.isUserInteractionEnabled = true
         let buyGesture = UITapGestureRecognizer(target: collectionViewCell.self, action: #selector(buyViewController))
-        iv.addGestureRecognizer(buyGesture)
         
         //imageView.addArrangedSubview(iv)
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -359,7 +374,7 @@ class collectionViewCell: UICollectionViewCell {
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
-
+            
             priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),

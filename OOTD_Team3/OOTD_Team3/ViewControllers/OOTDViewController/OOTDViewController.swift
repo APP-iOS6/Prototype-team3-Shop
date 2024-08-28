@@ -10,6 +10,7 @@ import UIKit
 class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var items: [Item] = []
+    
     private lazy var collectionView: UICollectionView = {
         // UICollectionView의 레이아웃 설정
         let layout = UICollectionViewFlowLayout()
@@ -24,14 +25,14 @@ class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         // Cell의 크기와 간격 조정
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .systemGray5
         
         // 재활용 가능한 custom cell 선언
         collectionView.register(MyCell.self, forCellWithReuseIdentifier: "MyCell")
@@ -42,19 +43,20 @@ class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 20
+        stackView.spacing = 5
         
         for style in Style.allCases {
             let button = UIButton()
             button.setTitle(style.rawValue, for: .normal)
-            button.backgroundColor = .lightGray
+            button.backgroundColor = .gray
             button.layer.cornerRadius = 5
             
             button.addTarget(self, action: #selector(selectMember), for: .touchUpInside)
             stackView.addArrangedSubview(button)
         }
-        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -80,7 +82,8 @@ class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollecti
         NSLayoutConstraint.activate([
             buttonStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
             buttonStackView.heightAnchor.constraint(equalToConstant: 50),
-            buttonStackView.widthAnchor.constraint(equalTo: safeGuide.widthAnchor),
+            buttonStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 20),
+            buttonStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             
             collectionView.topAnchor.constraint(equalTo: buttonStackView.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor),
@@ -90,6 +93,13 @@ class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @objc func selectMember(_ sender: UIButton) {
+        
+        // 카테고리 선택 시 회색->검정색
+        for case let button as UIButton in buttonStackView.arrangedSubviews {
+            button.backgroundColor = .gray
+        }
+        sender.backgroundColor = .black
+        
         if let title = sender.titleLabel?.text {
             items = switch title {
             case Style.geekSik.rawValue:
@@ -120,6 +130,7 @@ class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }
@@ -139,6 +150,7 @@ class MyCell: UICollectionViewCell {
         
         imageView.frame = contentView.bounds
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
         
         heartImageView.contentMode = .scaleAspectFit
@@ -164,6 +176,6 @@ class MyCell: UICollectionViewCell {
 }
 
 
-//#Preview {
-//    OOTDViewController()
-//}
+#Preview {
+    OOTDViewController()
+}

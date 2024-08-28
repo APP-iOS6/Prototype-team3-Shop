@@ -32,6 +32,9 @@
 		F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BC2C7D9324007A608C /* HomeViewController.swift */; };
 		F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806BE2C7D932B007A608C /* MyViewController.swift */; };
 		F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806C02C7D9334007A608C /* ClosetViewController.swift */; };
+		F6FA2AE72C7F27BA00157E9D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA2AE62C7F27BA00157E9D /* MainTabBarController.swift */; };
+		F6FA2AE92C7F298E00157E9D /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA2AE82C7F298E00157E9D /* AddItemViewController.swift */; };
+		F6FA2AEB2C7F29A800157E9D /* PostOOTDOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA2AEA2C7F29A800157E9D /* PostOOTDOptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,9 @@
 		F67806BC2C7D9324007A608C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F67806BE2C7D932B007A608C /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		F67806C02C7D9334007A608C /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
+		F6FA2AE62C7F27BA00157E9D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F6FA2AE82C7F298E00157E9D /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		F6FA2AEA2C7F29A800157E9D /* PostOOTDOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOOTDOptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,8 @@
 			children = (
 				F67806C02C7D9334007A608C /* ClosetViewController.swift */,
 				8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */,
+				F6FA2AE82C7F298E00157E9D /* AddItemViewController.swift */,
+				F6FA2AEA2C7F29A800157E9D /* PostOOTDOptionViewController.swift */,
 			);
 			path = ClosetViewControllers;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 				8BDDB1622C7EA77B0011A6F3 /* ItemDetailesViewController.swift */,
 				8BDDB17B2C7F02590011A6F3 /* PayViewController.swift */,
 				8BDDB17D2C7F05A40011A6F3 /* PayResultViewController.swift */,
+				F6FA2AE62C7F27BA00157E9D /* MainTabBarController.swift */,
 			);
 			path = DetailPageViewControllers;
 			sourceTree = "<group>";
@@ -274,8 +283,10 @@
 			files = (
 				8BDDB1652C7EA7910011A6F3 /* LoginViewController.swift in Sources */,
 				8BDDB1572C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift in Sources */,
+				F6FA2AE72C7F27BA00157E9D /* MainTabBarController.swift in Sources */,
 				8BDDB1672C7EA7AB0011A6F3 /* LogoViewController.swift in Sources */,
 				F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */,
+				F6FA2AE92C7F298E00157E9D /* AddItemViewController.swift in Sources */,
 				8BDDB15C2C7EA6850011A6F3 /* OOTDItem.swift in Sources */,
 				F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */,
 				F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */,
@@ -291,6 +302,7 @@
 				8BDDB15E2C7EA6B00011A6F3 /* OOTDItemStore.swift in Sources */,
 				8BDDB17E2C7F05A40011A6F3 /* PayResultViewController.swift in Sources */,
 				F67806BB2C7D9318007A608C /* OOTDViewController.swift in Sources */,
+				F6FA2AEB2C7F29A800157E9D /* PostOOTDOptionViewController.swift in Sources */,
 				8BDDB16D2C7EA7F40011A6F3 /* TestViewController.swift in Sources */,
 				8BDDB16B2C7EA7E00011A6F3 /* TestStartViewController.swift in Sources */,
 			);

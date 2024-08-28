@@ -22,13 +22,15 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
     // 채팅 시나리오 설정위한 변수
     private var currentStep = 0
     // 헤더 스택뷰로 관리
-    
+  
     private lazy var headerStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [headerImageView,headerLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
+      //  stackView.distribution = .equalCentering
         stackView.spacing = 8
         stackView.alignment = .fill
+
         return stackView
     }()
     
@@ -97,6 +99,11 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         stackView.alignment = .fill
         return stackView
     }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        messages.append(Message(text: ": 안녕하세요! 티디가 코디를 추천해 드릴게요!", isUser: false, images: nil))
+        messages.append(Message(text: ": 코디!, 코디 추천해줘! 라고 말해주세요!", isUser: false, images: nil))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +117,7 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         let safeArea = view.safeAreaLayoutGuide
         let margin: CGFloat = 8.5
         NSLayoutConstraint.activate([
+           
             stackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: margin),
             stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: margin),
             stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -margin),
@@ -155,33 +163,41 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
     
     //시나리오에 따라 챗봇 구현
     private func chatScenario(for text: String) {
+        
         switch currentStep {
         case 0:
             if text.lowercased().contains("코디") {
-                messages.append(Message(text: " : 오늘 어디를 가나요?", isUser: false, images: nil))
+                messages.append(Message(text: ": 오늘 어디를 가나요?", isUser: false, images: nil))
                 currentStep += 1
             }
+            else {
+                
+                messages.append(Message(text: ": 이해를 못했어요. 코디, 코디추천해줘 같이 말해주세요.", isUser: false, images: nil))
+                //currentStep = 0
+            }
         case 1:
-            messages.append(Message(text: " : 누구랑 가나요?", isUser: false, images: nil))
+            messages.append(Message(text: ": 누구랑 가나요?", isUser: false, images: nil))
             currentStep += 1
         case 2:
-            if let image1 = UIImage(named: "긱시크1"),
-               let image2 = UIImage(named: "긱시크2"),
-               let image3 = UIImage(named: "긱시크3") {
-                messages.append(Message(text: " : 스타일을 추천해드릴게요.", isUser: false, images: nil))
-                messages.append(Message(text: " : 긱시크 스타일 추천드려요!", isUser: false, images: [image1, image2, image3]))
-                messages.append(Message(text: " : 추가해줘 혹은 싫어로 대답해주세요.", isUser: false, images: nil))
+            if let image1 = UIImage(named: "gikSik1"),
+               let image2 = UIImage(named: "gikSik2"),
+               let image3 = UIImage(named: "gikSik3") {
+                messages.append(Message(text: ": 스타일을 추천해드릴게요.", isUser: false, images: nil))
+                messages.append(Message(text: ": 긱시크 스타일 추천드려요!", isUser: false, images: [image1, image2, image3]))
+                messages.append(Message(text: ": 추가해줘 혹은 싫어로 대답해주세요.", isUser: false, images: nil))
                 currentStep += 1
             }
         case 3:
             if text == "추가해줘" {
-                messages.append(Message(text: " : 추천 스타일에 반영하겠습니다!", isUser: false, images: nil))
+                messages.append(Message(text: ": 추천 스타일에 반영하겠습니다!", isUser: false, images: nil))
+                messages.append(Message(text: ": 다시 추천을 원하시면 코디, 코디추천해줘 같이 말해주세요. ", isUser: false, images: nil))
                 currentStep = 0
             } else if text == "싫어" {
-                messages.append(Message(text: " : 다음에 또 불러주세요!.", isUser: false, images: nil))
+                messages.append(Message(text: ": 다음에 또 불러주세요!.", isUser: false, images: nil))
+                messages.append(Message(text: ": 다시 추천을 원하시면 코디, 코디추천해줘 같이 말해주세요. ", isUser: false, images: nil))
                 currentStep = 0
             } else {
-                messages.append(Message(text: " : 추가해줘 혹은 싫어요 형식으로 대답해 주세요.", isUser: false, images: nil))
+                messages.append(Message(text: ": 추가해줘 혹은 싫어요 형식으로 대답해 주세요.", isUser: false, images: nil))
             }
         default:
             break
@@ -194,7 +210,8 @@ class ChatCell: UITableViewCell {
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        
         //label.backgroundColor = .red
         return label
     }()
@@ -262,8 +279,9 @@ class ChatCell: UITableViewCell {
             messageLabel.textAlignment = .left
             messageLabel.textColor = .black
             characterImageView.isHidden = false
-            
-            characterImageView.image = UIImage(named: "챗봇캐릭터")
+                       
+            characterImageView.image = UIImage(named: "chatbot2")
+            //messageLabel.text = " : 채팅을 입력해주세오"
             if let images = message.images {
                 for image in images {
                     
@@ -275,4 +293,7 @@ class ChatCell: UITableViewCell {
             }
         }
     }
+}
+#Preview{
+    LipsOOTDChatBotViewController()
 }

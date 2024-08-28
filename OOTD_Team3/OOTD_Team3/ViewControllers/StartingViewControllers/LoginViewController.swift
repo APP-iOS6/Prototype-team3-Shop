@@ -132,23 +132,8 @@ class LoginViewController: UIViewController {
     }
     
     private func goToHomeScreen() {
-        // 홈 화면과 탭바 설정
-        let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
         
-        let ootdViewController = OOTDViewController()
-        ootdViewController.tabBarItem = UITabBarItem(title: "오오티디", image: UIImage(systemName: "number"), tag: 1)
-        
-        let closetViewController = ClosetViewController()
-        closetViewController.tabBarItem = UITabBarItem(title: "옷장", image: UIImage(systemName: "hanger"), tag: 2)
-        
-        let myViewController = MyViewController()
-        myViewController.tabBarItem = UITabBarItem(title: "마이", image: UIImage(systemName: "person"), tag: 3)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeViewController, ootdViewController, closetViewController, myViewController]
-        
-        // 전체 화면으로 탭바 컨트롤러 표시
+        let tabBarController = MainTabBarController()
         tabBarController.modalTransitionStyle = .crossDissolve
         tabBarController.modalPresentationStyle = .fullScreen
         
