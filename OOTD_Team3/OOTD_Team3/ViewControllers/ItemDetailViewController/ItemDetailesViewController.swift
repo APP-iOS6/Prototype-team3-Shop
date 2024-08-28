@@ -15,6 +15,13 @@ class ItemDetailesViewController: UIViewController {
         setupUI()
     }
 
+    // 하트가 버튼 + 클릭 동작 확인
+    private let heartButton = UIButton(type: .system)
+    var isclicked = false
+    
+    // 구매하기 버튼
+    let buyButton = UIButton(type: .system)
+    
     private func setupUI() {
         // 스크롤뷰 설정
         let scrollView = UIScrollView()
@@ -33,28 +40,27 @@ class ItemDetailesViewController: UIViewController {
         view.addSubview(logoImageView)
 
         // 이미지 뷰
-        let imageView = UIImageView(image: UIImage(named: "itemDetailes"))
+        let imageView = UIImageView(image: UIImage(named: "detailes"))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(imageView)
-
+        
         // 하트 누르기 버튼
-        let heartButton = UIButton(type: .system)
         heartButton.setTitle("♡", for: .normal)
-        heartButton.backgroundColor = .black
+        heartButton.backgroundColor = .gray
         heartButton.setTitleColor(.white, for: .normal)
         heartButton.layer.cornerRadius = 8
         heartButton.translatesAutoresizingMaskIntoConstraints = false
-        heartButton.addAction(UIAction(title: "하트 누르기") { _ in }, for: .touchUpInside)
+        heartButton.addTarget(self, action: #selector(heartbuttonTapped), for: .touchUpInside)
 
         // 구매하기 버튼
-        let buyButton = UIButton(type: .system)
         buyButton.setTitle("구매하기", for: .normal)
         buyButton.backgroundColor = .black
         buyButton.setTitleColor(.white, for: .normal)
         buyButton.layer.cornerRadius = 8
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         buyButton.addAction(UIAction(title: "구매하기") { _ in }, for: .touchUpInside)
+        buyButton.addTarget(self, action: #selector(paySheetViewController), for: .touchUpInside)
 
         // 버튼들을 담을 UIStackView 설정
         let actionStackView = UIStackView(arrangedSubviews: [heartButton, buyButton])
@@ -88,7 +94,7 @@ class ItemDetailesViewController: UIViewController {
             // 이미지뷰 제약조건
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2),
+            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.3),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
             // 스택 뷰 제약조건
@@ -99,8 +105,32 @@ class ItemDetailesViewController: UIViewController {
             actionStackView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
+    // 하트 클릭 동작
+    @objc private func heartbuttonTapped() {
+        if isclicked {
+            // 이미지가 보이는 상태라면 이미지를 제거
+            heartButton.setTitle("♥", for: .normal)
+        } else {
+            heartButton.setTitle("♡", for: .normal)
+        }
+        // 상태를 반전시킴
+        isclicked.toggle()
+    }
+    
+    // 구매 동작
+    @objc private func paySheetViewController() {
+        let paysheetview = PayViewController()
+        
+        if let sheet = paysheetview.sheetPresentationController {
+            sheet.detents = [.large(), .large()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(paysheetview, animated: true, completion: nil)
+    }
 }
 
-//#Preview {
-//    ItemDetailesViewController()
-//}
+#Preview {
+    ItemDetailesViewController()
+}
+
