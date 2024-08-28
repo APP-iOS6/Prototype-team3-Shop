@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		8BDDB1572C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */; };
 		8BDDB1592C7E15DD0011A6F3 /* JSLookBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */; };
+		8BDDB15C2C7EA6850011A6F3 /* OOTDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB15B2C7EA6850011A6F3 /* OOTDItem.swift */; };
+		8BDDB15E2C7EA6B00011A6F3 /* OOTDItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB15D2C7EA6B00011A6F3 /* OOTDItemStore.swift */; };
+		8BDDB1612C7EA71B0011A6F3 /* AppDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1602C7EA71B0011A6F3 /* AppDescriptionViewController.swift */; };
+		8BDDB1632C7EA77B0011A6F3 /* ItemDetailesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1622C7EA77B0011A6F3 /* ItemDetailesViewController.swift */; };
+		8BDDB1652C7EA7910011A6F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1642C7EA7910011A6F3 /* LoginViewController.swift */; };
+		8BDDB1672C7EA7AB0011A6F3 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1662C7EA7AB0011A6F3 /* LogoViewController.swift */; };
+		8BDDB1692C7EA7CB0011A6F3 /* TestResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1682C7EA7CB0011A6F3 /* TestResultViewController.swift */; };
+		8BDDB16B2C7EA7E00011A6F3 /* TestStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB16A2C7EA7E00011A6F3 /* TestStartViewController.swift */; };
+		8BDDB16D2C7EA7F40011A6F3 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB16C2C7EA7F40011A6F3 /* TestViewController.swift */; };
+		8BDDB16F2C7EA80E0011A6F3 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB16E2C7EA80E0011A6F3 /* UserDetailsViewController.swift */; };
+		8BDDB1712C7EA8440011A6F3 /* cat.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BDDB1702C7EA8440011A6F3 /* cat.json */; };
+		8BDDB1792C7EABDA0011A6F3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8BDDB1782C7EABDA0011A6F3 /* Lottie */; };
 		F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806A62C7D92EB007A608C /* AppDelegate.swift */; };
 		F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806A82C7D92EB007A608C /* SceneDelegate.swift */; };
 		F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806AA2C7D92EB007A608C /* ViewController.swift */; };
@@ -23,6 +35,17 @@
 /* Begin PBXFileReference section */
 		8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipsOOTDChatBotViewController.swift; sourceTree = "<group>"; };
 		8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSLookBookViewController.swift; sourceTree = "<group>"; };
+		8BDDB15B2C7EA6850011A6F3 /* OOTDItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDItem.swift; sourceTree = "<group>"; };
+		8BDDB15D2C7EA6B00011A6F3 /* OOTDItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDItemStore.swift; sourceTree = "<group>"; };
+		8BDDB1602C7EA71B0011A6F3 /* AppDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionViewController.swift; sourceTree = "<group>"; };
+		8BDDB1622C7EA77B0011A6F3 /* ItemDetailesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailesViewController.swift; sourceTree = "<group>"; };
+		8BDDB1642C7EA7910011A6F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8BDDB1662C7EA7AB0011A6F3 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
+		8BDDB1682C7EA7CB0011A6F3 /* TestResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultViewController.swift; sourceTree = "<group>"; };
+		8BDDB16A2C7EA7E00011A6F3 /* TestStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStartViewController.swift; sourceTree = "<group>"; };
+		8BDDB16C2C7EA7F40011A6F3 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		8BDDB16E2C7EA80E0011A6F3 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		8BDDB1702C7EA8440011A6F3 /* cat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cat.json; sourceTree = "<group>"; };
 		F67806A32C7D92EB007A608C /* OOTD_Team3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OOTD_Team3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67806A62C7D92EB007A608C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67806A82C7D92EB007A608C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,12 +64,69 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDDB1792C7EABDA0011A6F3 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BDDB15F2C7EA6BB0011A6F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BDDB15B2C7EA6850011A6F3 /* OOTDItem.swift */,
+				8BDDB15D2C7EA6B00011A6F3 /* OOTDItemStore.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BDDB1722C7EA8730011A6F3 /* TestViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8BDDB16A2C7EA7E00011A6F3 /* TestStartViewController.swift */,
+				8BDDB16C2C7EA7F40011A6F3 /* TestViewController.swift */,
+				8BDDB1682C7EA7CB0011A6F3 /* TestResultViewController.swift */,
+				8BDDB16E2C7EA80E0011A6F3 /* UserDetailsViewController.swift */,
+			);
+			path = TestViewControllers;
+			sourceTree = "<group>";
+		};
+		8BDDB1732C7EA90B0011A6F3 /* StartingViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8BDDB1662C7EA7AB0011A6F3 /* LogoViewController.swift */,
+				8BDDB1642C7EA7910011A6F3 /* LoginViewController.swift */,
+				8BDDB1602C7EA71B0011A6F3 /* AppDescriptionViewController.swift */,
+			);
+			path = StartingViewControllers;
+			sourceTree = "<group>";
+		};
+		8BDDB1742C7EA97F0011A6F3 /* HomeViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F67806BC2C7D9324007A608C /* HomeViewController.swift */,
+				8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */,
+			);
+			path = HomeViewControllers;
+			sourceTree = "<group>";
+		};
+		8BDDB1752C7EA9DF0011A6F3 /* ClosetViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F67806C02C7D9334007A608C /* ClosetViewController.swift */,
+				8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */,
+			);
+			path = ClosetViewControllers;
+			sourceTree = "<group>";
+		};
+		8BDDB1762C7EAA620011A6F3 /* ItemDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BDDB1622C7EA77B0011A6F3 /* ItemDetailesViewController.swift */,
+			);
+			path = ItemDetailViewController;
+			sourceTree = "<group>";
+		};
 		F678069A2C7D92EB007A608C = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +146,11 @@
 		F67806A52C7D92EB007A608C /* OOTD_Team3 */ = {
 			isa = PBXGroup;
 			children = (
+				8BDDB15F2C7EA6BB0011A6F3 /* Model */,
 				F67806C22C7D933D007A608C /* ViewControllers */,
 				F67806A62C7D92EB007A608C /* AppDelegate.swift */,
 				F67806A82C7D92EB007A608C /* SceneDelegate.swift */,
+				8BDDB1702C7EA8440011A6F3 /* cat.json */,
 				F67806AA2C7D92EB007A608C /* ViewController.swift */,
 				F67806AF2C7D92ED007A608C /* Assets.xcassets */,
 				F67806B12C7D92ED007A608C /* LaunchScreen.storyboard */,
@@ -80,12 +162,13 @@
 		F67806C22C7D933D007A608C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8BDDB1722C7EA8730011A6F3 /* TestViewControllers */,
+				8BDDB1732C7EA90B0011A6F3 /* StartingViewControllers */,
+				8BDDB1742C7EA97F0011A6F3 /* HomeViewControllers */,
 				F67806BA2C7D9318007A608C /* OOTDViewController.swift */,
-				F67806BC2C7D9324007A608C /* HomeViewController.swift */,
+				8BDDB1752C7EA9DF0011A6F3 /* ClosetViewControllers */,
 				F67806BE2C7D932B007A608C /* MyViewController.swift */,
-				F67806C02C7D9334007A608C /* ClosetViewController.swift */,
-				8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */,
-				8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */,
+				8BDDB1762C7EAA620011A6F3 /* ItemDetailViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -106,6 +189,9 @@
 			dependencies = (
 			);
 			name = OOTD_Team3;
+			packageProductDependencies = (
+				8BDDB1782C7EABDA0011A6F3 /* Lottie */,
+			);
 			productName = OOTD_Team3;
 			productReference = F67806A32C7D92EB007A608C /* OOTD_Team3.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +220,9 @@
 				Base,
 			);
 			mainGroup = F678069A2C7D92EB007A608C;
+			packageReferences = (
+				8BDDB1772C7EABDA0011A6F3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = F67806A42C7D92EB007A608C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,6 +239,7 @@
 			files = (
 				F67806B02C7D92ED007A608C /* Assets.xcassets in Resources */,
 				F67806B32C7D92ED007A608C /* Base in Resources */,
+				8BDDB1712C7EA8440011A6F3 /* cat.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,15 +250,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDDB1652C7EA7910011A6F3 /* LoginViewController.swift in Sources */,
 				8BDDB1572C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift in Sources */,
+				8BDDB1672C7EA7AB0011A6F3 /* LogoViewController.swift in Sources */,
 				F67806BD2C7D9324007A608C /* HomeViewController.swift in Sources */,
+				8BDDB15C2C7EA6850011A6F3 /* OOTDItem.swift in Sources */,
 				F67806BF2C7D932B007A608C /* MyViewController.swift in Sources */,
 				F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */,
+				8BDDB1692C7EA7CB0011A6F3 /* TestResultViewController.swift in Sources */,
+				8BDDB1612C7EA71B0011A6F3 /* AppDescriptionViewController.swift in Sources */,
 				F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */,
+				8BDDB1632C7EA77B0011A6F3 /* ItemDetailesViewController.swift in Sources */,
 				8BDDB1592C7E15DD0011A6F3 /* JSLookBookViewController.swift in Sources */,
 				F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */,
+				8BDDB16F2C7EA80E0011A6F3 /* UserDetailsViewController.swift in Sources */,
 				F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */,
+				8BDDB15E2C7EA6B00011A6F3 /* OOTDItemStore.swift in Sources */,
 				F67806BB2C7D9318007A608C /* OOTDViewController.swift in Sources */,
+				8BDDB16D2C7EA7F40011A6F3 /* TestViewController.swift in Sources */,
+				8BDDB16B2C7EA7E00011A6F3 /* TestStartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +489,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8BDDB1772C7EABDA0011A6F3 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8BDDB1782C7EABDA0011A6F3 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BDDB1772C7EABDA0011A6F3 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F678069B2C7D92EB007A608C /* Project object */;
 }
