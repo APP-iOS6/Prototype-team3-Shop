@@ -13,7 +13,7 @@ class ClosetViewController: UIViewController {
         // 버튼 추가
         let aiFloatingButton = UIButton(type: .system)
         aiFloatingButton.setTitle("CHAT", for: .normal)
-        aiFloatingButton.backgroundColor = .systemBrown
+        aiFloatingButton.backgroundColor = .black
         aiFloatingButton.setTitleColor(.white, for: .normal)
         aiFloatingButton.layer.cornerRadius = 25
         aiFloatingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)

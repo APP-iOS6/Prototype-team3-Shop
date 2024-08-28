@@ -6,55 +6,56 @@ class HomeViewController: UIViewController {
     private var collectionView: UICollectionView!
     private let images = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8", "image9", "image10"]
     
-    private let profileImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(named: "cat") // 프로젝트에 추가된 이미지
-            imageView.contentMode = .scaleAspectFit
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.isHidden = true // 초기에는 숨김 상태
-            return imageView
-        }()
+    // 버튼 추가
+    let chatButton: UIButton = {
+        let chatfloatingButton = UIButton(type: .system)
+        chatfloatingButton.setTitle("티디\n프로필", for: .normal)
+        chatfloatingButton.titleLabel?.numberOfLines = 0
+        chatfloatingButton.titleLabel?.textAlignment = .center
+        chatfloatingButton.setTitleColor(.black, for: .normal)
+        chatfloatingButton.titleLabel?.isHidden = true
+        
+        chatfloatingButton.backgroundColor = .white
+        chatfloatingButton.layer.cornerRadius = 40
+        return chatfloatingButton
+    }()
+    
+    var isImageVisible = false
+    var istextVisible = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        // 버튼 추가
-        let chatfloatingButton = UIButton(type: .system)
-        chatfloatingButton.setTitle("NED 프로필", for: .normal)
-        chatfloatingButton.backgroundColor = .red
-        chatfloatingButton.setTitleColor(.white, for: .focused)
-        chatfloatingButton.layer.cornerRadius = 999
-        chatfloatingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-        view.addSubview(chatfloatingButton)
-        view.addSubview(profileImageView)
-        chatfloatingButton.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.addSubview(chatButton)
         // 오토 레이아웃 설정
-        chatfloatingButton.translatesAutoresizingMaskIntoConstraints = false
+        chatButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            chatfloatingButton.widthAnchor.constraint(equalToConstant: 100),
-            chatfloatingButton.heightAnchor.constraint(equalToConstant: 50),
-            chatfloatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            chatfloatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            chatButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 280),
+            chatButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 125),
+            chatButton.widthAnchor.constraint(equalToConstant: 80),
+            chatButton.heightAnchor.constraint(equalToConstant: 80)
         ])
+        chatButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
-        NSLayoutConstraint.activate([
-            profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            profileImageView.bottomAnchor.constraint(equalTo: chatfloatingButton.topAnchor, constant: -10),
-            profileImageView.widthAnchor.constraint(equalToConstant: 200),
-            profileImageView.heightAnchor.constraint(equalToConstant: 100)
-        ])
         
-        // 버튼을 가장 위로 가져오기
-        view.bringSubviewToFront(chatfloatingButton)
         setupLayout()  // 레이아웃 설정
+        // 버튼을 가장 위로 가져오기
+        view.bringSubviewToFront(chatButton)
     }
     
     // 버튼 액션
     @objc private func buttonTapped() {
-        profileImageView.isHidden.toggle()
+        if isImageVisible {
+            // 이미지가 보이는 상태라면 이미지를 제거
+            chatButton.setBackgroundImage(nil, for: .normal)
+        } else {
+            // 이미지가 보이지 않는 상태라면 이미지를 추가
+            chatButton.setBackgroundImage(UIImage(named: "cat"), for: .normal)
+        }
+        // 상태를 반전시킴
+        isImageVisible.toggle()
+        istextVisible.toggle()
     }
     
     private func setupLayout() {
@@ -242,3 +243,6 @@ class collectionViewCell: UICollectionViewCell {
 }
 
 
+#Preview{
+    HomeViewController()
+}
