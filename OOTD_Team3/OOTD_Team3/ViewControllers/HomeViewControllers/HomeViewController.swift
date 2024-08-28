@@ -324,10 +324,9 @@ class collectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // 네비게이션 - 상세페이지로 넘어감
     @objc private func buyViewController() {
-        guard let viewController = homeViewController else {
-                    return
-                }
+        guard let viewController = homeViewController else {return}
         
         let buyViewController = ItemDetailesViewController()
         viewController.navigationController?.pushViewController(buyViewController, animated: true)
