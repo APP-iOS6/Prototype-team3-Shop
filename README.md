@@ -1,7 +1,5 @@
-<p align="left">
-  ![appstore](https://github.com/user-attachments/assets/cb60fad5-455c-4e54-8a09-f6d8de26a0aa)
-  
-</p>
+![appstore](https://github.com/user-attachments/assets/cb60fad5-455c-4e54-8a09-f6d8de26a0aa)
+
 
 # #ootd
 <img width="181" alt="스크린샷 2024-08-28 오후 7 43 39" src="https://github.com/user-attachments/assets/a291166e-ffc2-4f6d-a246-4798f8c01752">
