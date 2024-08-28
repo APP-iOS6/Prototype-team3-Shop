@@ -1,5 +1,6 @@
-
+<p align="left">
 ![appstore](https://github.com/user-attachments/assets/0e29b7fe-5e04-444a-b258-c2e7ec0dd938)
+</p>
 
 # #ootd
 <img width="181" alt="스크린샷 2024-08-28 오후 7 43 39" src="https://github.com/user-attachments/assets/a291166e-ffc2-4f6d-a246-4798f8c01752">
@@ -20,7 +21,7 @@
 </p>
 
 2. AI 채팅을 통한 스타일 추천
-- 어떤 장소에 가는지, 누구를 만나는지, 그리고 어떤 분위기를 원하는지에 따라 맞춤 스타일을 제안합니다. 
+- 어떤 장소에 가는지, 누구를 만나는지, 그리고 어떤 분위기를 원하는지에 따라 맞춤 스타일을 제안합니다.
 3. 나의 옷장 기능:
 - 기존에 자신이 가진 아이템들로 코디를 해볼 수 있습니다.
 - 자신만의 OOTD를 올리고, 공유할 수 있습니다.
