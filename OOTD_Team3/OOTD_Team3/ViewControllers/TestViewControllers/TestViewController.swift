@@ -26,7 +26,7 @@ class TestViewController: UIViewController {
     private let resultButton = UIButton(type: .system)
     
     // 말풍선 이미지
-    private let resultBubbleImageView = UIImageView(image: UIImage(named: "resultbubble"))
+    private let resultBubbleImageView = UIImageView(image: UIImage(named: "resultBubble"))
     
     // 현재 문제 인덱스
     private var currentQuestionIndex = 0

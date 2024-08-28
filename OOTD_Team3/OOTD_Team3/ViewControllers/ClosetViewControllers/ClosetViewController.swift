@@ -1,10 +1,3 @@
-//
-//  StarViewController.swift
-//  OOTD_Team3
-//
-//  Created by wonhoKim on 8/27/24.
-//
-
 import UIKit
 
 class ClosetViewController: UIViewController {
@@ -12,11 +5,10 @@ class ClosetViewController: UIViewController {
     private let images = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8", "image9", "image10"]
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        super.viewDidLoad()
         closetSetupLayout()
-        // Do any additional setup after loading the view.
     }
     
     // 오토 레이아웃 설정
@@ -33,22 +25,24 @@ class ClosetViewController: UIViewController {
         NSLayoutConstraint.activate([
             hstackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             hstackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            hstackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            hstackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            hstackView.heightAnchor.constraint(equalToConstant: 60) // hstackView의 높이 설정
         ])
         
         // collectionView 레이아웃 설정
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: hstackView.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            collectionView.bottomAnchor.constraint(equalTo: vstackView.topAnchor, constant: -10)
         ])
         
         // vstackView 레이아웃 설정
         NSLayoutConstraint.activate([
-            vstackView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
             vstackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             vstackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            vstackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            vstackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            vstackView.heightAnchor.constraint(equalToConstant: 100) // vstackView의 높이 설정
         ])
     }
 
@@ -56,29 +50,22 @@ class ClosetViewController: UIViewController {
     private func hStack() -> UIStackView {
         let hstackView = UIStackView()
         hstackView.axis = .horizontal
-        hstackView.alignment = .fill
-        hstackView.distribution = .fillEqually
+        hstackView.alignment = .center
+        hstackView.distribution = .fill
         hstackView.spacing = 10
 
-//        let logoImageView = UIImageView()     // 로고
-//        logoImageView.image = UIImage(named: "Image")
-//        logoImageView.contentMode = .scaleAspectFit
-//        logoImageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
-//        logoImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-//        hstackView.addArrangedSubview(logoImageView)
-        
         let closetLabel = UILabel()
         closetLabel.text = "MY CLOSET"
         closetLabel.font = .preferredFont(forTextStyle: .largeTitle)
         closetLabel.textColor = .brown
-        closetLabel.contentMode = .scaleAspectFit
+        closetLabel.contentMode = .center
+        closetLabel.textAlignment = .center
         
         hstackView.addArrangedSubview(closetLabel)
         
         hstackView.translatesAutoresizingMaskIntoConstraints = false
         return hstackView
     }
-    
     
     // 컬렉션 뷰 생성
     private func collectionViewfunc() -> UICollectionView {
@@ -149,8 +136,6 @@ class ClosetViewController: UIViewController {
     }
 }
 
-
-
 // 컬렉션 뷰 익스텐션 - 다시 보기
 extension ClosetViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -202,5 +187,5 @@ class closetcollectionViewCell: UICollectionViewCell {
     func configure(with imageName: String) {
         imageView.image = UIImage(named: imageName)
     }
-
 }
+

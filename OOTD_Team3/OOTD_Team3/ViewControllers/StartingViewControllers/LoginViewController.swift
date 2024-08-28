@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        
+        
         // 로고 이미지
         let logoImageView = UIImageView(image: UIImage(named: "White"))
         logoImageView.contentMode = .scaleAspectFit
@@ -130,10 +132,28 @@ class LoginViewController: UIViewController {
     }
     
     private func goToHomeScreen() {
-        let logoViewController = LogoViewController()
-        logoViewController.modalTransitionStyle = .crossDissolve // 전환 스타일 설정
-        logoViewController.modalPresentationStyle = .fullScreen // 전체 화면으로 표시
-        present(logoViewController, animated: true, completion: nil)
+        // 홈 화면과 탭바 설정
+        let homeViewController = HomeViewController()
+        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
+        
+        let ootdViewController = OOTDViewController()
+        ootdViewController.tabBarItem = UITabBarItem(title: "오오티디", image: UIImage(systemName: "number"), tag: 1)
+        
+        let closetViewController = ClosetViewController()
+        closetViewController.tabBarItem = UITabBarItem(title: "옷장", image: UIImage(systemName: "hanger"), tag: 2)
+        
+        let myViewController = MyViewController()
+        myViewController.tabBarItem = UITabBarItem(title: "마이", image: UIImage(systemName: "person"), tag: 3)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeViewController, ootdViewController, closetViewController, myViewController]
+        
+        // 전체 화면으로 탭바 컨트롤러 표시
+        tabBarController.modalTransitionStyle = .crossDissolve
+        tabBarController.modalPresentationStyle = .fullScreen
+        
+        // 현재 LoginViewController에서 홈 화면으로 전환
+        present(tabBarController, animated: true, completion: nil)
     }
 }
 

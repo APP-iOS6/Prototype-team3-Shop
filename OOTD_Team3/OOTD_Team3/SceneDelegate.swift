@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
        
@@ -28,17 +27,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let myViewController = MyViewController()
         myViewController.tabBarItem = UITabBarItem(title: "마이", image: UIImage(systemName: "person"), tag: 3)
         
-       
+        
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [homeViewController, ootdViewController, closetViewController, myViewController]
         
-     
+        let logoViewController = LogoViewController()
+        logoViewController.modalPresentationStyle = .fullScreen
+        
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = tabBarController
+        window?.rootViewController = logoViewController
         window?.makeKeyAndVisible()
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
