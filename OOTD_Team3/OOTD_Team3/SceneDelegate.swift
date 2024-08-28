@@ -4,7 +4,7 @@
 //
 //  Created by wonhoKim on 8/27/24.
 //
-
+//테스트 커밋..
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
