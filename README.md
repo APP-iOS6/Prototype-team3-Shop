@@ -2,7 +2,9 @@
 
 
 # #ootd
-<img width="181" alt="https://github.com/user-attachments/assets/1fbaedf7-a406-4d79-986e-6a3cdd68fc3e">
+![제목](https://github.com/user-attachments/assets/8387e828-8fe7-49d3-941e-cb74278feec6)
+
+
 
 “나만의 시그니처 룩, #ootd에서 만나보자!⭐️”
 
