@@ -1,17 +1,16 @@
 <img src="https://github.com/user-attachments/assets/cb60fad5-455c-4e54-8a09-f6d8de26a0aa" width="250" height="250">
-
+<br/>
 
 # #ootd
 <img src="https://github.com/user-attachments/assets/8387e828-8fe7-49d3-941e-cb74278feec6" width="200" height="250">
-
-
 “나만의 시그니처 룩, #ootd에서 만나보자!⭐️”
+<br/>
 
 ## 🙋‍♀️ADS
 당신이 오늘 무엇을 입어야 할지 고민되시나요? #ootd는 선택장애가 있는 사용자들을 위한 맞춤형 패션 큐레이터입니다. 
 재미있는 테스트를 통해 나만의 시그니처 룩을 찾아보세요. 
 당신의 취향에 딱 맞는 스타일 추천 구매까지 모두 가능합니다.
-
+<br/> <br/>
 
 ## 주요기능
 1. ✅ 패션 취향 테스트:
@@ -23,7 +22,7 @@
   - 자신만의 OOTD를 올리고, 공유할 수 있습니다.
 4. 👥 룩북 기능
   - 다양한 스타일들을 볼 수 있고 코디된 아이템들을 볼 수 있습니다.
-
+<br/><br/>
 
 
 ## 주요화면
@@ -33,9 +32,8 @@
   <img src="https://github.com/user-attachments/assets/8f232db7-ab9f-4883-a10c-deef2d8d09ef" width="150" height="300">
   <img src="https://github.com/user-attachments/assets/a6fe7d08-b877-4168-95b2-d9fda867f1b8" width="150" height="300"> 
 
-
 </p>
-
+<br/><br/>
 
 # 작동환경
 - Xcode: 14.0
