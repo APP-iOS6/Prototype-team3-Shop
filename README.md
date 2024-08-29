@@ -3,7 +3,7 @@
 
 # #ootd
 <img src="https://github.com/user-attachments/assets/8387e828-8fe7-49d3-941e-cb74278feec6" width="200" height="250">
-“나만의 시그니처 룩, #ootd에서 만나보자!⭐️”
+“나만의 시그니처 룩, #ootd에서 고양이 티디와 함께 만나보자!⭐️”
 <br/>
 
 ## 🙋‍♀️ADS
