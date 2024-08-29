@@ -30,3 +30,4 @@ class PayResultViewController: UIViewController {
         ])
     }
 }
+ 
