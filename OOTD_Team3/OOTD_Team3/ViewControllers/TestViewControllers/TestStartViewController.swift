@@ -145,6 +145,6 @@ class TestStartViewController: UIViewController {
     }
 }
 
-#Preview {
-    TestStartViewController()
-}
+//#Preview {
+//    TestStartViewController()
+//}
