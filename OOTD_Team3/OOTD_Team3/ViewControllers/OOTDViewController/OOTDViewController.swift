@@ -196,6 +196,6 @@ class MyCell: UICollectionViewCell {
     }
 }
 
-#Preview {
-    OOTDViewController()
-}
+//#Preview {
+//    OOTDViewController()
+//}

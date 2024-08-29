@@ -2,7 +2,7 @@
 import UIKit
 import Lottie
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     private let lottieView = createLottie()  // Lottie 애니메이션 뷰 생성
     private var collectionView: UICollectionView!  // 상품 이미지를 표시하는 컬렉션 뷰
@@ -29,10 +29,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground  // 배경색 설정
-        view.bringSubviewToFront(lottieView)
-        
+
         setupViews()  // 뷰 설정
         setupLayout()  // 레이아웃 설정
+        view.bringSubviewToFront(lottieView)
+        view.bringSubviewToFront(profileButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,9 +72,9 @@ class HomeViewController: UIViewController {
         // Lottie 뷰 오토레이아웃 설정
         NSLayoutConstraint.activate([
             lottieView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lottieView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -159),
-            lottieView.widthAnchor.constraint(equalToConstant: 190),
-            lottieView.heightAnchor.constraint(equalToConstant: 190)
+            lottieView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200),
+            lottieView.widthAnchor.constraint(equalToConstant: 150),
+            lottieView.heightAnchor.constraint(equalToConstant: 150)
         ])
         
         // 프로필 버튼 오토레이아웃 설정
@@ -87,9 +88,9 @@ class HomeViewController: UIViewController {
         
         // 가이드 라벨 생성
         let guideLabel = UILabel()
-        guideLabel.text = "아래 상품을 클릭하여 구매하실 수 있습니다."
+        guideLabel.text = "CLICK ME ➤"
         guideLabel.textAlignment = .center
-        guideLabel.font = UIFont.systemFont(ofSize: 14)
+        guideLabel.font = UIFont.systemFont(ofSize: 20)
         guideLabel.textColor = .black
         view.addSubview(guideLabel)
         guideLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +109,7 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             guideLabel.topAnchor.constraint(equalTo: vstackView.bottomAnchor, constant: 10),
             guideLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            guideLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            guideLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -210),
             
             vstackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             vstackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
@@ -162,21 +163,43 @@ class HomeViewController: UIViewController {
         logoImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         logoImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
-        let textField = UITextField()
-        textField.placeholder = "OOTD 검색"
-        textField.borderStyle = .roundedRect
-        textField.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        // 검색어 입력을 위한 UITextField
+        lazy var queryTextField: UITextField = {
+            let textField = UITextField()
+            textField.placeholder = "검색어를 입력하세요" // 플레이스홀더 설정
+            textField.borderStyle = .roundedRect // 텍스트 필드 테두리 스타일 설정
+            textField.tintColor = .gray // 커서 색상 설정
+            textField.delegate = self // 텍스트 필드 델리게이트 설정
+            
+            // 검색 아이콘 추가
+            let image = UIImage(systemName: "magnifyingglass")
+            textField.leftView = UIImageView(image: image)
+            textField.leftViewMode = .always
+            
+            // 텍스트 필드를 초기화하는 클리어 버튼 추가
+            let clearButton = UIButton()
+            clearButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+            clearButton.addAction(UIAction { _ in
+                textField.text = "" // 텍스트 필드를 초기화
+                textField.resignFirstResponder() // 키보드를 내리도록 설정
+            }, for: .touchUpInside)
+            
+            textField.rightView = clearButton
+            textField.rightViewMode = .whileEditing
+            
+            return textField
+        }()
+
         
         let chatImageView = UIImageView(image: UIImage(named: ""))
         chatImageView.contentMode = .scaleAspectFit
-        chatImageView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        chatImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        chatImageView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        chatImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         chatImageView.isUserInteractionEnabled = true
         chatImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentChatBot)))
         
         vstackView.addArrangedSubview(logoImageView)
-        vstackView.addArrangedSubview(textField)
+        vstackView.addArrangedSubview(queryTextField)
         vstackView.addArrangedSubview(chatImageView)
         vstackView.translatesAutoresizingMaskIntoConstraints = false
         

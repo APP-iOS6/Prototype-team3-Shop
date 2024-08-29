@@ -12,10 +12,7 @@ class PayViewController: UIViewController {
     let payButton: UIButton = {
         let payfloatingButton = UIButton(type: .system)
         payfloatingButton.setTitle("결제하기", for: .normal)
-//        chatfloatingButton.titleLabel?.numberOfLines = 0
-//        chatfloatingButton.titleLabel?.textAlignment = .center
         payfloatingButton.setTitleColor(.white, for: .normal)
-        //payfloatingButton.titleLabel?.isHidden = true
         payfloatingButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         
         payfloatingButton.backgroundColor = .black
@@ -31,7 +28,7 @@ class PayViewController: UIViewController {
         payButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             payButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            payButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 695),
+            payButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 690),
             payButton.widthAnchor.constraint(equalToConstant: 360),
             payButton.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -42,8 +39,6 @@ class PayViewController: UIViewController {
         pageImageView.image = UIImage(named: "Checkout")
         pageImageView.contentMode = .scaleAspectFit
         pageImageView.clipsToBounds = true
-        //vstackView.addArrangedSubview(pageImageView)
-        // Do any additional setup after loading the view.
         
         view.addSubview(pageImageView)
         
@@ -60,14 +55,14 @@ class PayViewController: UIViewController {
     }
     
     @objc private func paybuttonTapped() {
-        let payresultsheetController = PayResultViewController()
+        let payresultnavigateController = PayResultViewController()
         
-        if let sheet = payresultsheetController.sheetPresentationController {
+        if let sheet = payresultnavigateController.sheetPresentationController {
             sheet.detents = [.large(), .large()]
             sheet.prefersGrabberVisible = true
         }
         
-        present(payresultsheetController, animated: true, completion: nil)
+        present(payresultnavigateController, animated: true, completion: nil)
     }
     
     
