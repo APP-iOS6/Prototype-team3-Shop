@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B5141A62C80565000050779 /* OOTDDetailesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5141A52C80565000050779 /* OOTDDetailesViewController.swift */; };
 		8BDDB1572C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */; };
 		8BDDB15C2C7EA6850011A6F3 /* OOTDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB15B2C7EA6850011A6F3 /* OOTDItem.swift */; };
 		8BDDB15E2C7EA6B00011A6F3 /* OOTDItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB15D2C7EA6B00011A6F3 /* OOTDItemStore.swift */; };
@@ -22,6 +23,7 @@
 		8BDDB1792C7EABDA0011A6F3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8BDDB1782C7EABDA0011A6F3 /* Lottie */; };
 		8BDDB17C2C7F02590011A6F3 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB17B2C7F02590011A6F3 /* PayViewController.swift */; };
 		8BDDB17E2C7F05A40011A6F3 /* PayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB17D2C7F05A40011A6F3 /* PayResultViewController.swift */; };
+		F65326902C80681400A53D44 /* BodyTypeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F653268F2C80681400A53D44 /* BodyTypeInfoViewController.swift */; };
 		F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806A62C7D92EB007A608C /* AppDelegate.swift */; };
 		F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806A82C7D92EB007A608C /* SceneDelegate.swift */; };
 		F67806AB2C7D92EB007A608C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67806AA2C7D92EB007A608C /* ViewController.swift */; };
@@ -52,6 +54,7 @@
 		8BDDB1702C7EA8440011A6F3 /* cat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cat.json; sourceTree = "<group>"; };
 		8BDDB17B2C7F02590011A6F3 /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		8BDDB17D2C7F05A40011A6F3 /* PayResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayResultViewController.swift; sourceTree = "<group>"; };
+		F653268F2C80681400A53D44 /* BodyTypeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeInfoViewController.swift; sourceTree = "<group>"; };
 		F67806A32C7D92EB007A608C /* OOTD_Team3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OOTD_Team3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67806A62C7D92EB007A608C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67806A82C7D92EB007A608C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 				8BDDB16C2C7EA7F40011A6F3 /* TestViewController.swift */,
 				8BDDB1682C7EA7CB0011A6F3 /* TestResultViewController.swift */,
 				8BDDB16E2C7EA80E0011A6F3 /* UserDetailsViewController.swift */,
+				F653268F2C80681400A53D44 /* BodyTypeInfoViewController.swift */,
 			);
 			path = TestViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +299,7 @@
 				8BDDB1632C7EA77B0011A6F3 /* ItemDetailesViewController.swift in Sources */,
 				8BDDB17C2C7F02590011A6F3 /* PayViewController.swift in Sources */,
 				4B5141A62C80565000050779 /* OOTDDetailesViewController.swift in Sources */,
+				F65326902C80681400A53D44 /* BodyTypeInfoViewController.swift in Sources */,
 				F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */,
 				8BDDB16F2C7EA80E0011A6F3 /* UserDetailsViewController.swift in Sources */,
 				F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */,

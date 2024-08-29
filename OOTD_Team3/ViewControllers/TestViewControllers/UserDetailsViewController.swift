@@ -22,11 +22,15 @@ class UserDetailsViewController: UIViewController {
     private let weightLabel = UILabel()
     private let weightTextField = UITextField()
     
+    // 체형 정보 레이블 및 아이콘
+    private let bodyTypeInfoLabel = UILabel()
+    private let bodyTypeInfoButton = UIButton(type: .infoLight) // "i" 버튼 추가
+    
     // 체형 선택 세그먼트 컨트롤
-    private let bodyTypeSegmentedControl = UISegmentedControl(items: ["스트레이트", "웨이브", "내추럴"])
+    private let bodyTypeSegmentedControl = UISegmentedControl(items: ["스트레이트", "웨이브", "내추럴", "모르겠어요"])
     
     // 성별 선택 세그먼트 컨트롤
-    private let genderSegmentedControl = UISegmentedControl(items: ["남성", "여성"])
+    private let genderSegmentedControl = UISegmentedControl(items: ["🚹남성", "🚺여성", "기타", "선택하지 않음"])
     
     // 개인정보 사용 동의 레이블
     private let infoLabel = UILabel()
@@ -88,10 +92,22 @@ class UserDetailsViewController: UIViewController {
         weightTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(weightTextField)
         
+        // 체형 정보 레이블 및 아이콘 설정
+        bodyTypeInfoLabel.text = "체형이란 무엇인가요?"
+        bodyTypeInfoLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        bodyTypeInfoLabel.textColor = .gray
+        bodyTypeInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bodyTypeInfoLabel)
+        
+        bodyTypeInfoButton.translatesAutoresizingMaskIntoConstraints = false
+        bodyTypeInfoButton.addTarget(self, action: #selector(showBodyTypeInfo), for: .touchUpInside)
+        view.addSubview(bodyTypeInfoButton)
+        
         // 체형 선택 세그먼트 컨트롤 설정
         bodyTypeSegmentedControl.selectedSegmentIndex = 0
         bodyTypeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bodyTypeSegmentedControl)
+        
         
         // 성별 선택 세그먼트 컨트롤 설정
         genderSegmentedControl.selectedSegmentIndex = 0
@@ -166,18 +182,26 @@ class UserDetailsViewController: UIViewController {
             weightTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             weightTextField.heightAnchor.constraint(equalToConstant: 40),
             
+            // 체형 정보 레이블 및 아이콘 제약조건
+            bodyTypeInfoLabel.topAnchor.constraint(equalTo: weightTextField.bottomAnchor, constant: 30),
+            bodyTypeInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            bodyTypeInfoButton.centerYAnchor.constraint(equalTo: bodyTypeInfoLabel.centerYAnchor),
+            bodyTypeInfoButton.leadingAnchor.constraint(equalTo: bodyTypeInfoLabel.trailingAnchor, constant: 5),
+            
             // 체형 선택 세그먼트 컨트롤 제약조건
-            bodyTypeSegmentedControl.topAnchor.constraint(equalTo: weightTextField.bottomAnchor, constant: 30),
+            bodyTypeSegmentedControl.topAnchor.constraint(equalTo: bodyTypeInfoLabel.bottomAnchor, constant: 19),
             bodyTypeSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             bodyTypeSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            
             // 성별 선택 세그먼트 컨트롤 제약조건
-            genderSegmentedControl.topAnchor.constraint(equalTo: bodyTypeSegmentedControl.bottomAnchor, constant: 30),
+            genderSegmentedControl.topAnchor.constraint(equalTo: bodyTypeSegmentedControl.bottomAnchor, constant: 30), // 수정된 부분
             genderSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             genderSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // 개인정보 사용 동의 레이블 제약조건
-            infoLabel.topAnchor.constraint(equalTo: genderSegmentedControl.bottomAnchor, constant: 100),
+            infoLabel.topAnchor.constraint(equalTo: genderSegmentedControl.bottomAnchor, constant: 70),
             infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
@@ -209,6 +233,12 @@ class UserDetailsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    @objc private func showBodyTypeInfo() {
+        let infoViewController = BodyTypeInfoViewController()
+        infoViewController.modalPresentationStyle = .overFullScreen
+        present(infoViewController, animated: true, completion: nil)
+    }
+    
     private func signUpButtonTapped() {
         let loginViewController = LoginViewController()
         // 네비게이션을 통해 로그인 화면으로 전환
@@ -216,3 +246,6 @@ class UserDetailsViewController: UIViewController {
     }
 }
 
+//#Preview {
+//    UserDetailsViewController()
+//}

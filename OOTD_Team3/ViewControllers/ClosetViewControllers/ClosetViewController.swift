@@ -1,19 +1,38 @@
+
+
+
+
+
 import UIKit
 
-class ClosetViewController: UIViewController {
+protocol AddItemViewControllerDelegate: AnyObject {
+    func didSelectItemsToAdd(_ items: [String])
+}
+
+class ClosetViewController: UIViewController, AddItemViewControllerDelegate {
+    
+
+    private let closetLabel: UILabel = {
+        let label = UILabel()
+        label.text = "MY CLOSET"
+        label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
 
     private let stylingRecommendationImages = ["graytop", "kashikoskirt", "celinebag", "goldengoose"]
     private let myClosetImages = ["yellowpointbag", "wooyoungmitshirt", "supremebag", "pinktop", "kashikoskirt", "kashikoskirtivory", "kenzotshirt", "lightjeans", "militarypants", "patternedpants", "patternedtop", "cortezsesame", "cortezsuede", "daybreakcoconut", "emisbag", "frankietshirt", "goldengoose", "graytop", "celinetshirt", "celinebag", "cdgbag", "capripants", "camotshirt", "bermudabrown", "airforcemid"]
 
-    private let topsImages = ["camotshirt", "celinetshirt", "pinktop", "frankietshirt", "graytop", "kenzotshirt", "patternedtop"]
-    private let bottomsImages = ["patternedpants", "capripants", "lightjeans", "militarypants", "kashikoskirtivory", "kashikoskirt"]
-    private let shoesImages = ["airforcemid", "bermudabrown", "cortezsesame", "cortezsuede", "daybreakcoconut", "goldengoose"]
-    private let bagsImages = ["yellowpointbag", "cdgbag", "celinebag", "supremebag", "emisbag"]
+    private var topsImages = ["camotshirt", "celinetshirt", "pinktop", "frankietshirt", "graytop", "kenzotshirt", "patternedtop"]
+    private var bottomsImages = ["patternedpants", "capripants", "lightjeans", "militarypants", "kashikoskirtivory", "kashikoskirt"]
+    private var shoesImages = ["airforcemid", "bermudabrown", "cortezsesame", "cortezsuede", "daybreakcoconut", "goldengoose"]
+    private var bagsImages = ["yellowpointbag", "cdgbag", "celinebag", "supremebag", "emisbag"]
 
     private let lookbookImages = ["noneimage", "noneimage", "noneimage"]
-    
     private let ootdImages = ["ootdpicture", "ootdpicture2", "ootdpicture3", "ootdpicture4", "ootdpicture", "ootdpicture2", "ootdpicture3", "ootdpicture4"]
-    
+
     private var images: [String] = []
     private var filteredImages: [String] = []
     private var collectionView: UICollectionView!
@@ -27,6 +46,16 @@ class ClosetViewController: UIViewController {
     private let recommendationLabel2 = UILabel()
     private let categorySegmentControl = UISegmentedControl(items: ["상의", "하의", "신발", "가방"]) // 카테고리 세그먼트 컨트롤러
 
+    private let segmentControl = UISegmentedControl(items: ["나의 옷장", "나의 OOTD"])
+
+    // 나의 옷장 상태에서의 제약 조건 배열
+    private var closetConstraints: [NSLayoutConstraint] = []
+
+    // 나의 OOTD 상태에서의 제약 조건 배열
+    private var ootdConstraints: [NSLayoutConstraint] = []
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -35,29 +64,23 @@ class ClosetViewController: UIViewController {
         filteredImages = topsImages
 
         setupUI()
+        setupConstraints() // 제약 조건 설정
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // 네비게이션 바 숨기기
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false) // 네비게이션 바 숨기기
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // 다른 화면으로 이동할 때 네비게이션 바를 계속 숨기기
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false) // 다른 화면으로 이동할 때 네비게이션 바를 계속 숨기기
     }
 
     private func setupUI() {
-        // MY CLOSET 라벨
-        let closetLabel = UILabel()
-        closetLabel.text = "MY CLOSET"
-        closetLabel.font = .preferredFont(forTextStyle: .largeTitle)
-        closetLabel.textColor = .black
-        closetLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(closetLabel)
+
 
         // "티디가 추천해주는 코디템 조합!" 라벨 추가
         recommendationLabel.text = "# 티디가 추천해주는 코디템 조합"
@@ -70,7 +93,7 @@ class ClosetViewController: UIViewController {
         view.addSubview(recommendationLabel)
 
         // "Owned Clothes" 라벨 추가
-        recommendationLabel2.text = "Owned Clothes"
+        recommendationLabel2.text = "소유중인 ITEM"
         recommendationLabel2.font = .preferredFont(forTextStyle: .body)
         recommendationLabel2.textColor = .white
         recommendationLabel2.backgroundColor = .black
@@ -86,7 +109,6 @@ class ClosetViewController: UIViewController {
         view.addSubview(categorySegmentControl)
 
         // 세그먼트 컨트롤러 (나의 옷장, 나의 OOTD)
-        let segmentControl = UISegmentedControl(items: ["나의 옷장", "나의 OOTD"])
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +147,7 @@ class ClosetViewController: UIViewController {
         shareButton.setTitleColor(.white, for: .normal)
         shareButton.layer.cornerRadius = 8
         shareButton.translatesAutoresizingMaskIntoConstraints = false
-        shareButton.addTarget(self, action: #selector(showAddItemModal), for: .touchUpInside) // 액션 추가
+        shareButton.addTarget(self, action: #selector(showAddItemModal), for: .touchUpInside)
         view.addSubview(shareButton)
 
         // #OOTD 게시하기 버튼
@@ -139,25 +161,64 @@ class ClosetViewController: UIViewController {
         addLookbookButton.isHidden = true // 초기에는 숨김 처리
         addLookbookButton.addAction(UIAction { [weak self] _ in
             self?.showPostOOTDOptionModal()
-        }, for: .touchUpInside) // addAction 사용
+        }, for: .touchUpInside)
         view.addSubview(addLookbookButton)
+        
 
+    }
+    // AddItemViewControllerDelegate 메서드 구현
+    func didSelectItemsToAdd(_ items: [String]) {
+        // 현재 선택된 세그먼트에 따라 filteredImages에 아이템 추가
+        switch categorySegmentControl.selectedSegmentIndex {
+        case 0: // 상의
+            topsImages.append(contentsOf: items)
+            filteredImages = topsImages
+        case 1: // 하의
+            bottomsImages.append(contentsOf: items)
+            filteredImages = bottomsImages
+        case 2: // 신발
+            shoesImages.append(contentsOf: items)
+            filteredImages = shoesImages
+        case 3: // 가방
+            bagsImages.append(contentsOf: items)
+            filteredImages = bagsImages
+        default:
+            break
+        }
+        collectionView2.reloadData() // 두 번째 컬렉션 뷰 업데이트
+    }
 
+    private func setupConstraints() {
+        // 나의 옷장 상태 제약 조건
+        closetConstraints = [
+            recommendationLabel2.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+            recommendationLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),  // 왼쪽 정렬 추가
+            collectionView2.topAnchor.constraint(equalTo: recommendationLabel2.bottomAnchor, constant: 15)
+        ]
+        
+        // 나의 OOTD 상태 제약 조건
+        ootdConstraints = [
+            recommendationLabel2.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
+            recommendationLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),  // 왼쪽 정렬 추가
+            collectionView2.topAnchor.constraint(equalTo: recommendationLabel2.bottomAnchor, constant: 15)
+        ]
+        
+        // 초기에는 나의 옷장 상태를 활성화
+        NSLayoutConstraint.activate(closetConstraints)
+        
         // 오토레이아웃 설정
         NSLayoutConstraint.activate([
             // MY CLOSET 라벨
-            closetLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            closetLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -5),
             closetLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 
             // "티디가 추천해주는 코디템 조합!" 라벨
             recommendationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            recommendationLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -10),
+            recommendationLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -15),
             recommendationLabel.widthAnchor.constraint(equalToConstant: 230),
             recommendationLabel.heightAnchor.constraint(equalToConstant: 30),
 
             // Owned Clothes 라벨
-            recommendationLabel2.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 30),
-            recommendationLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             recommendationLabel2.widthAnchor.constraint(equalToConstant: 150),
             recommendationLabel2.heightAnchor.constraint(equalToConstant: 30),
 
@@ -167,7 +228,7 @@ class ClosetViewController: UIViewController {
             categorySegmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
             // 세그먼트 컨트롤러
-            segmentControl.topAnchor.constraint(equalTo: closetLabel.bottomAnchor, constant: 20),
+            segmentControl.topAnchor.constraint(equalTo: closetLabel.bottomAnchor, constant: 10),
             segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
@@ -175,13 +236,12 @@ class ClosetViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 60),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            collectionView.heightAnchor.constraint(equalToConstant: 150),
+            collectionView.heightAnchor.constraint(equalToConstant: 100),
 
             // 두 번째 컬렉션 뷰 (Owned Clothes)
-            collectionView2.topAnchor.constraint(equalTo: recommendationLabel2.bottomAnchor, constant: 10),
             collectionView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             collectionView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            collectionView2.bottomAnchor.constraint(equalTo: shareButton.topAnchor, constant: -20),
+            collectionView2.bottomAnchor.constraint(equalTo: shareButton.topAnchor, constant: -10),
 
             // 코디템 추가하기 버튼
             shareButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -196,18 +256,18 @@ class ClosetViewController: UIViewController {
             addLookbookButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    
-    private func showPostOOTDOptionModal() {
-        let postOOTDOptionVC = PostOOTDOptionViewController()
-        postOOTDOptionVC.modalPresentationStyle = .formSheet // 작은 모달 스타일 설정
-        present(postOOTDOptionVC, animated: true, completion: nil)
-    }
-    
+
     @objc private func showAddItemModal() {
         let addItemVC = AddItemViewController()
-        addItemVC.modalPresentationStyle = .pageSheet // 모달 스타일 설정
+        addItemVC.delegate = self // 여기에 추가하세요
+        addItemVC.modalPresentationStyle = .pageSheet
         present(addItemVC, animated: true, completion: nil)
+    }
+
+    @objc private func showPostOOTDOptionModal() {
+        let postOOTDOptionVC = PostOOTDOptionViewController()
+        postOOTDOptionVC.modalPresentationStyle = .formSheet
+        present(postOOTDOptionVC, animated: true, completion: nil)
     }
 
     @objc private func categoryChanged(_ sender: UISegmentedControl) {
@@ -231,47 +291,58 @@ class ClosetViewController: UIViewController {
             images = stylingRecommendationImages
             shareButton.isHidden = false
             addLookbookButton.isHidden = true
-            categorySegmentControl.isHidden = false // 세그먼트 컨트롤러 보이기
+            categorySegmentControl.isHidden = false
+            
+            recommendationLabel.isHidden = false
+            recommendationLabel2.isHidden = false
+            
+            collectionView.isHidden = false
+            collectionView2.isHidden = false
+
             recommendationLabel.text = "# 티디가 추천해주는 코디템 조합"
             recommendationLabel2.text = "Owned Clothes"
-            collectionView2.setCollectionViewLayout(UICollectionViewFlowLayout(), animated: false) // 기존 레이아웃 유지
-            filteredImages = topsImages // 기본값
+            collectionView2.setCollectionViewLayout(UICollectionViewFlowLayout(), animated: false)
+            filteredImages = topsImages
+            
+            NSLayoutConstraint.deactivate(ootdConstraints) // 나의 OOTD 레이아웃 비활성화
+            NSLayoutConstraint.activate(closetConstraints) // 나의 옷장 레이아웃 활성화
+            
         } else { // 나의 OOTD 선택 시
             images = lookbookImages
             shareButton.isHidden = true
             addLookbookButton.isHidden = false
-            categorySegmentControl.isHidden = true // 세그먼트 컨트롤러 숨기기
-            recommendationLabel.text = "# 내가 추천하는 코디템 조합하기"
-            recommendationLabel2.text = "내가 공유한 #OOTD"
+            categorySegmentControl.isHidden = true
             
-            // 새로운 이미지 배열로 설정
+            recommendationLabel.isHidden = true
+            collectionView.isHidden = true
+            
+            recommendationLabel2.text = "내가 공유한 #OOTD"
+            recommendationLabel2.isHidden = false
+            
+            collectionView2.isHidden = false
+            
             filteredImages = ootdImages
             
-            // 새로운 레이아웃 설정 (가로 2칸, 세로 스크롤)
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
-            
-            // 화면 너비에 따라 셀 크기 설정 (가로 2칸)
-            let itemWidth = (view.bounds.width - 50) / 2  // 양쪽 마진 20, 셀 간격 10 기준
+            let itemWidth = (view.bounds.width - 50) / 2
             layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-            
             layout.minimumLineSpacing = 10
             layout.minimumInteritemSpacing = 10
-            
-            // `estimatedItemSize`를 .zero로 설정하여 자동 크기 조정 비활성화
             layout.estimatedItemSize = .zero
-            
-            // 새로운 레이아웃 적용
             collectionView2.setCollectionViewLayout(layout, animated: false)
-            collectionView2.collectionViewLayout.invalidateLayout() // 레이아웃 무효화 후 재적용
+            collectionView2.collectionViewLayout.invalidateLayout()
+            
+            NSLayoutConstraint.deactivate(closetConstraints) // 나의 옷장 레이아웃 비활성화
+            NSLayoutConstraint.activate(ootdConstraints) // 나의 OOTD 레이아웃 활성화
         }
+        
         collectionView.reloadData()
         collectionView2.reloadData()
     }
 }
 
-
-
+// UICollectionViewDataSource 및 UICollectionViewDelegateFlowLayout
 extension ClosetViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -300,10 +371,9 @@ extension ClosetViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
 
-    // 여기에 sizeForItemAt 메서드를 추가합니다.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.collectionView2 { // "내가 공유한 #OOTD" 섹션에만 적용
-            let itemWidth = (view.bounds.width - 50) / 2  // 양쪽 마진 20, 셀 간격 10 기준
+        if collectionView == self.collectionView2 {
+            let itemWidth = (view.bounds.width - 50) / 2
             return CGSize(width: itemWidth, height: itemWidth)
         } else {
             let width = (collectionView.bounds.width - 20) / 3
@@ -312,8 +382,8 @@ extension ClosetViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
+// CollectionView 셀 설정
 class ClosetCollectionViewCell: UICollectionViewCell {
-
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -368,6 +438,6 @@ class PlusCollectionViewCell: UICollectionViewCell {
     }
 }
 
-#Preview {
-    ClosetViewController()
-}
+//#Preview {
+//    ClosetViewController()
+//}
