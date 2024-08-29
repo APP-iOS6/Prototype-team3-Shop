@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8BDDB1572C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */; };
-		8BDDB1592C7E15DD0011A6F3 /* JSLookBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */; };
 		8BDDB15C2C7EA6850011A6F3 /* OOTDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB15B2C7EA6850011A6F3 /* OOTDItem.swift */; };
 		8BDDB15E2C7EA6B00011A6F3 /* OOTDItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB15D2C7EA6B00011A6F3 /* OOTDItemStore.swift */; };
 		8BDDB1612C7EA71B0011A6F3 /* AppDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDB1602C7EA71B0011A6F3 /* AppDescriptionViewController.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		8BDDB1562C7E13740011A6F3 /* LipsOOTDChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipsOOTDChatBotViewController.swift; sourceTree = "<group>"; };
-		8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSLookBookViewController.swift; sourceTree = "<group>"; };
 		8BDDB15B2C7EA6850011A6F3 /* OOTDItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDItem.swift; sourceTree = "<group>"; };
 		8BDDB15D2C7EA6B00011A6F3 /* OOTDItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOTDItemStore.swift; sourceTree = "<group>"; };
 		8BDDB1602C7EA71B0011A6F3 /* AppDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				F67806C02C7D9334007A608C /* ClosetViewController.swift */,
-				8BDDB1582C7E15DD0011A6F3 /* JSLookBookViewController.swift */,
 				F6FA2AE82C7F298E00157E9D /* AddItemViewController.swift */,
 				F6FA2AEA2C7F29A800157E9D /* PostOOTDOptionViewController.swift */,
 			);
@@ -295,7 +292,6 @@
 				F67806A72C7D92EB007A608C /* AppDelegate.swift in Sources */,
 				8BDDB1632C7EA77B0011A6F3 /* ItemDetailesViewController.swift in Sources */,
 				8BDDB17C2C7F02590011A6F3 /* PayViewController.swift in Sources */,
-				8BDDB1592C7E15DD0011A6F3 /* JSLookBookViewController.swift in Sources */,
 				F67806A92C7D92EB007A608C /* SceneDelegate.swift in Sources */,
 				8BDDB16F2C7EA80E0011A6F3 /* UserDetailsViewController.swift in Sources */,
 				F67806C12C7D9334007A608C /* ClosetViewController.swift in Sources */,

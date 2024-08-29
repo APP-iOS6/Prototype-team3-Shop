@@ -132,17 +132,13 @@ class LoginViewController: UIViewController {
     }
     
     private func goToHomeScreen() {
-        
         let tabBarController = MainTabBarController()
-        tabBarController.modalTransitionStyle = .crossDissolve
-        tabBarController.modalPresentationStyle = .fullScreen
-        
-        // 현재 LoginViewController에서 홈 화면으로 전환
-        present(tabBarController, animated: true, completion: nil)
+        // 네비게이션을 통해 홈 화면으로 전환
+        navigationController?.pushViewController(tabBarController, animated: true)
     }
 }
 
 
-//#Preview {
-//    LoginViewController()
-//}
+#Preview {
+    LoginViewController()
+}

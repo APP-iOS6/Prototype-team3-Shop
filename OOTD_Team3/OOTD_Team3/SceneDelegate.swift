@@ -4,7 +4,7 @@
 //
 //  Created by wonhoKim on 8/27/24.
 //
-//테스트 커밋..
+
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -13,22 +13,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-       
+
+        // 로고 화면을 시작 화면으로 설정
         let logoViewController = LogoViewController()
-        logoViewController.modalPresentationStyle = .fullScreen
         
-        //let navigationController = UINavigationController(rootViewController: logoViewController)
+        // 네비게이션 컨트롤러 생성
+        let navigationController = UINavigationController(rootViewController: logoViewController)
         
-        //let home
-        let homeTabVc = HomeViewController()
-        
-        let naviagationVc = UINavigationController(rootViewController: homeTabVc)
-        
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = logoViewController
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = navigationController  // 네비게이션 컨트롤러를 루트로 설정
         window?.makeKeyAndVisible()
     }
+
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -67,7 +67,19 @@ class OOTDViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         setupInterface()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 네비게이션 바 숨기기
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 다른 화면으로 이동할 때 네비게이션 바를 계속 숨기기
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     func setupInterface() {
         view.addSubview(buttonStackView)

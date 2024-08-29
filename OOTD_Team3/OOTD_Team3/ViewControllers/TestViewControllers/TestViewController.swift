@@ -36,18 +36,22 @@ class TestViewController: UIViewController {
     
     // 문제와 선택지 데이터
     private let questions = [
-        ("오랜만에 동창들과 약속이 잡혔을 때, 넌 어떻게 준비할 것 같아?", ["존재감 뿜뿜할 수 있는 포인트 아이템 장착!", "괜히 욕심부리지 말자! 평소처럼 코디"]),
-        ("친구에게 옷을 선물할 때 어떤 부분을 더 신경 써?", ["친구의 분위기에 딱 어울리는 옷", "언제 어디서든 매치할 수 있는 옷"]),
-        ("평소에 입던 스타일이랑 다른 옷을 살 때 넌 어떤 타입이야?", ["주변 사람들한테 살지 말지 물어보고 다녀", "내 취향이면 그냥 바로 사!"]),
-        ("너는 옷을 살 때 어디에 더 가까워?", ["전체적인 느낌을 따지는 편", "세부적인 디테일을 따지는 편"]),
-        ("오랜만에 외출해서 옷 쇼핑을 하기로 했을 때 넌 어때?", ["미리 뭐 살지 생각하고 가!", "일단 가서 뭘 살지 생각해!"])
+        ("당신은 새로운 스타일을 시도할 때 \n어떻게 하시나요?", ["새로운 도전을 즐기며 과감하게 시도하는 편이에요.", "익숙한 스타일을 유지하는 것이 편해요."]),
+        ("당신이 옷을 고를 때 \n가장 중요한 요소는 무엇인가요?", ["트렌디하고 최신 유행에 맞는 스타일을 선호해요.", "편안하고 내게 잘 맞는 스타일을 선호해요."]),
+        ("친구들을 만나러 외출할 때 \n어떤 스타일을 선호하나요?", ["눈에 띄고 주목받는 화려한 스타일.", "심플하면서도 세련된 미니멀한 스타일을 선호해요."]),
+        ("쇼핑을 할 때 어떤 기준으로 옷을 구매하나요?", ["그때그때 마음에 드는 아이템을 즉흥적으로 구매해요.", "필요한 옷을 미리 계획하고 구매하는 선호해요."]),
+        ("액세서리를 선택할 때 어떻게 고르시나요?", ["독특하고 개성 있는 디자인을 우선으로 고릅니다.", "기본적인 다양한곳에 어울리는 디자인을 선택합니다."])
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Back 버튼 숨기기
+        
         // 배경색 설정
         view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .darkGray
+        navigationItem.backButtonDisplayMode = .minimal
         
         // 프로그래스 바 설정
         progressBar.backgroundColor = .white
@@ -201,6 +205,19 @@ class TestViewController: UIViewController {
         // 첫 번째 문제 로드
         loadQuestion()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 네비게이션 바 숨기기
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 다른 화면으로 이동할 때 다시 네비게이션 바 보이기
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     private func loadQuestion() {
         guard currentQuestionIndex < questions.count else {
@@ -210,7 +227,23 @@ class TestViewController: UIViewController {
         }
         
         let questionData = questions[currentQuestionIndex]
-        questionLabel.text = questionData.0
+        
+        // 행간 조절과 중앙 정렬을 위한 NSMutableParagraphStyle 생성
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 8 // 원하는 행간으로 설정 (예: 8)
+        paragraphStyle.alignment = .center // 중앙 정렬 설정
+
+        // NSAttributedString을 사용하여 행간 및 중앙 정렬 적용
+        let attributedText = NSAttributedString(
+            string: questionData.0,
+            attributes: [
+                .paragraphStyle: paragraphStyle,
+                .font: UIFont.systemFont(ofSize: 18, weight: .regular) // 폰트 속성 추가
+            ]
+        )
+        
+        questionLabel.attributedText = attributedText // AttributedString을 사용하여 레이블 설정
+        
         option1Button.setTitle(questionData.1[0], for: .normal)
         option2Button.setTitle(questionData.1[1], for: .normal)
         
@@ -283,11 +316,8 @@ class TestViewController: UIViewController {
     
     private func showResult() {
         let testResultViewController = TestResultViewController()
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = testResultViewController
-            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-        }
+        // 네비게이션을 통해 결과 화면으로 전환
+        navigationController?.pushViewController(testResultViewController, animated: true)
     }
 }
 

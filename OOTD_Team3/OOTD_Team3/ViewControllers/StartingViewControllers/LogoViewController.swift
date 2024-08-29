@@ -30,21 +30,23 @@ class LogoViewController: UIViewController {
             logoImageView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
-        // 로고 화면을 2초 동안 표시
+        // 로고 화면을 3초 동안 표시한 후 전환
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.transitionToAppDescriptionScreen()
         }
     }
     
     private func transitionToAppDescriptionScreen() {
-        // 앱 설명 화면으로 전환
+        // 네비게이션 컨트롤러를 통해 앱 설명 화면으로 전환
+        let appDescriptionViewController = AppDescriptionViewController()
+        let navigationController = UINavigationController(rootViewController: appDescriptionViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        // 현재 창의 rootViewController를 네비게이션 컨트롤러로 설정
         if let window = UIApplication.shared.windows.first {
-            let appDescriptionViewController = AppDescriptionViewController()
-            appDescriptionViewController.modalPresentationStyle = .fullScreen
-            
-            window.rootViewController = appDescriptionViewController
+            window.rootViewController = navigationController
             UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                window.rootViewController = appDescriptionViewController
+                window.rootViewController = navigationController
             }, completion: nil)
         }
     }

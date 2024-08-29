@@ -16,6 +16,20 @@ class TestStartViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 네비게이션 바 숨기기
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 다른 화면으로 이동할 때 다시 네비게이션 바 보이기
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     private func setupUI() {
         let headlineLabel = createHeadlineLabel()
         let lottieView = createLottie()
@@ -120,20 +134,14 @@ class TestStartViewController: UIViewController {
     
     @objc private func startQuiz() {
         let questionViewController = TestViewController()
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = questionViewController
-            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-        }
+        // 네비게이션을 통해 다음 화면으로 전환
+        navigationController?.pushViewController(questionViewController, animated: true)
     }
-    
+
     @objc private func skipToHome() {
         let loginViewController = LoginViewController()
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = loginViewController
-            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-        }
+        // 네비게이션을 통해 다음 화면으로 전환
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 }
 
