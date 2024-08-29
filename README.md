@@ -25,6 +25,7 @@
 - 기존에 자신이 가진 아이템들로 코디를 해볼 수 있습니다.
 - 자신만의 OOTD를 올리고, 공유할 수 있습니다.
 4. 다양한 스타일들을 볼 수 있고 아이템들을 직접 구매할 수 있습니다.
+![챗봇테스트2](https://github.com/user-attachments/assets/91e4cfab-bcdc-435e-90ad-02d28aeb7efb)
 
 # 작동환경
 - Xcode: 14.0
