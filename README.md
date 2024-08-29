@@ -2,7 +2,7 @@
 
 
 # #ootd
-<img src="https://github.com/user-attachments/assets/8387e828-8fe7-49d3-941e-cb74278feec6" width="150" height="250">
+<img src="https://github.com/user-attachments/assets/8387e828-8fe7-49d3-941e-cb74278feec6" width="200" height="250">
 
 
 “나만의 시그니처 룩, #ootd에서 만나보자!⭐️”
@@ -28,10 +28,10 @@
 
 ## 주요화면
 <p align="left">
-  <img src="https://github.com/user-attachments/assets/91e4cfab-bcdc-435e-90ad-02d28aeb7efb" width="150" height="250">
-  <img src="https://github.com/user-attachments/assets/64cc9141-ecdf-4978-af6b-9f30525190d8" width="150" height="250">
-  <img src="https://github.com/user-attachments/assets/8f232db7-ab9f-4883-a10c-deef2d8d09ef" width="150" height="250">
-  <img src="https://github.com/user-attachments/assets/a6fe7d08-b877-4168-95b2-d9fda867f1b8" width="150" height="250"> 
+  <img src="https://github.com/user-attachments/assets/64cc9141-ecdf-4978-af6b-9f30525190d8" width="150" height="300">
+  <img src="https://github.com/user-attachments/assets/91e4cfab-bcdc-435e-90ad-02d28aeb7efb" width="150" height="300">
+  <img src="https://github.com/user-attachments/assets/8f232db7-ab9f-4883-a10c-deef2d8d09ef" width="150" height="300">
+  <img src="https://github.com/user-attachments/assets/a6fe7d08-b877-4168-95b2-d9fda867f1b8" width="150" height="300"> 
 
 
 </p>
