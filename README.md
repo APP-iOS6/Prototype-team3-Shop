@@ -1,4 +1,4 @@
-![appstore](https://github.com/user-attachments/assets/cb60fad5-455c-4e54-8a09-f6d8de26a0aa)
+<img src="https://github.com/user-attachments/assets/cb60fad5-455c-4e54-8a09-f6d8de26a0aa" width="250" height="250">
 
 
 # #ootd
