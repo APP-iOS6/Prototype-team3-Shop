@@ -1,4 +1,3 @@
-
 //
 //  LoginViewController.swift
 //  OOTD_Team3
@@ -14,6 +13,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        
         
         // 로고 이미지
         let logoImageView = UIImageView(image: UIImage(named: "White"))
@@ -48,17 +49,17 @@ class LoginViewController: UIViewController {
         }, for: .touchUpInside)
         view.addSubview(loginButton)
         
-        // 로그인 없이 둘러보기 버튼
-        let browseWithoutLoginButton = UIButton(type: .system)
-        browseWithoutLoginButton.setTitle("로그인 없이 둘러보기", for: .normal)
-        browseWithoutLoginButton.setTitleColor(.black, for: .normal)
-        browseWithoutLoginButton.layer.borderWidth = 1
-        browseWithoutLoginButton.layer.cornerRadius = 8
-        browseWithoutLoginButton.translatesAutoresizingMaskIntoConstraints = false
-        browseWithoutLoginButton.addAction(UIAction { [weak self] _ in
+        // 이메일로 가입하기 버튼
+        let signUpButton = UIButton(type: .system)
+        signUpButton.setTitle("이메일로 가입하기", for: .normal)
+        signUpButton.setTitleColor(.black, for: .normal)
+        signUpButton.layer.borderWidth = 1
+        signUpButton.layer.cornerRadius = 8
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton.addAction(UIAction { [weak self] _ in
             self?.goToHomeScreen()
         }, for: .touchUpInside)
-        view.addSubview(browseWithoutLoginButton)
+        view.addSubview(signUpButton)
         
         // 카카오로 로그인 버튼
         let kakaoLoginButton = UIButton(type: .system)
@@ -110,15 +111,14 @@ class LoginViewController: UIViewController {
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             
-            // 로그인 없이 둘러보기 버튼 제약조건
-            browseWithoutLoginButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 100),
-            browseWithoutLoginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            browseWithoutLoginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            browseWithoutLoginButton.heightAnchor.constraint(equalToConstant: 50),
-            
+            // 이메일로 가입하기 버튼 제약조건
+            signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 140),
+            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            signUpButton.heightAnchor.constraint(equalToConstant: 50),
             
             // 카카오로 로그인 버튼 제약조건
-            kakaoLoginButton.topAnchor.constraint(equalTo: browseWithoutLoginButton.bottomAnchor, constant: 20),
+            kakaoLoginButton.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 20),
             kakaoLoginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             kakaoLoginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             kakaoLoginButton.heightAnchor.constraint(equalToConstant: 50),

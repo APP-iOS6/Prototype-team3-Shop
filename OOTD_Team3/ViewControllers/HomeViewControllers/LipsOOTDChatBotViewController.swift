@@ -17,29 +17,27 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         let isUser: Bool
         let images: [UIImage]?
     }
-    //채팅기록 배열에 저장할곳
+    //채팅기록 저장할 배열
+    
     var messages: [Message] = []
-    // 채팅 시나리오 설정위한 변수
     private var currentStep = 0
-    // 헤더 스택뷰로 관리
-  
+    
+    //헤더 쪽 스택뷰
     private lazy var headerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [headerImageView,headerLabel])
+        let stackView = UIStackView(arrangedSubviews: [headerImageView, headerLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-      //  stackView.distribution = .equalCentering
         stackView.spacing = 8
         stackView.alignment = .fill
-
         return stackView
     }()
     
     private lazy var headerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "message.fill") // 일단 시스템 이미지 사용
+        imageView.image = UIImage(systemName: "message.fill")
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black // 시스템 이미지의 색상 변경
+        imageView.tintColor = .black
         imageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         return imageView
     }()
@@ -52,7 +50,8 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         label.textAlignment = .left
         return label
     }()
-    // 구분선
+    
+    //헤더와 몸통 구분선
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +59,7 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         return view
     }()
     
+    //채팅 보여줄 테이블뷰
     private lazy var chatTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +69,7 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         return tableView
     }()
     
+    //채팅을 입력할 텍스트 필드
     private lazy var chatTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -81,24 +82,25 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         sendButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        
         textField.rightView = sendButton
         textField.rightViewMode = .always
         textField.layer.cornerRadius = 8
         return textField
     }()
-    
-    
-    
+    // 헤더 구분선 채팅창(몸통) 텍스트필드를 세로로 배치할 스택뷰
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [headerStackView,separatorView, chatTableView, chatTextField])
+        let stackView = UIStackView(arrangedSubviews: [headerStackView, separatorView, chatTableView, chatTextField])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 3
         stackView.alignment = .fill
         return stackView
     }()
+    
+    // 키보드 관련해서 chatTextField의 bottomAnchor와 safeArea.bottomAnchor 사이의 거리를 조정위해 추가 잘은 모르겠음
+    private var bottomConstraint: NSLayoutConstraint?
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         messages.append(Message(text: ": 안녕하세요! 티디가 코디를 추천해 드릴게요!", isUser: false, images: nil))
@@ -110,23 +112,35 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         view.backgroundColor = .systemBackground
         view.addSubview(stackView)
         setUpInterface()
+       
+        //따로 빼면 왜 작동이 안될까?
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+    //키보드관련 키보드노피케이션 함수로 따로 뺌
+//    func keyboardNofication(){
+//
+//    }
+//
     func setUpInterface() {
         let safeArea = view.safeAreaLayoutGuide
         let margin: CGFloat = 8.5
+        bottomConstraint = chatTextField.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -margin)
+        
         NSLayoutConstraint.activate([
-           
             stackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: margin),
             stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: margin),
             stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -margin),
-            stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -margin),
+            bottomConstraint!,
             
             headerLabel.heightAnchor.constraint(equalToConstant: 30),
             separatorView.heightAnchor.constraint(equalToConstant: 1),
-            chatTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.8),
-            chatTextField.heightAnchor.constraint(equalToConstant: 30)
+            chatTableView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: margin),
+            chatTableView.bottomAnchor.constraint(equalTo: chatTextField.topAnchor, constant: -margin),
+            chatTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -141,12 +155,35 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-    //엔터 쳤을때 샌드 메세지 메소드 실행
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        sendMessage(from: textField)
-        return true
+    //여백 터치하면 키보드 사라짐
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
+    //키보드 보여질때
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let keyboardHeight = keyboardFrame.height
+            bottomConstraint?.constant = -keyboardHeight
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    //키보드 닫힐때
+    @objc func keyboardWillHide(notification: Notification) {
+        bottomConstraint?.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    //텍스트필드에서 엔터(리턴) 했을때 샌드메세지 함수 발동
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendMessage(from: textField)
+        textField.resignFirstResponder()
+        return true
+    }
+    //텍스트필드 버튼 눌렀을때 샌드메세지 함수 실행
     @objc private func sendButtonTapped() {
         sendMessage(from: chatTextField)
     }
@@ -160,20 +197,15 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
             chatTableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
-    
-    //시나리오에 따라 챗봇 구현
+    //채팅 시나리오  커렌트스탭이 커짐에 따라 단계별 시나리오 구성
     private func chatScenario(for text: String) {
-        
         switch currentStep {
         case 0:
             if text.lowercased().contains("코디") {
                 messages.append(Message(text: ": 오늘 어디를 가나요?", isUser: false, images: nil))
                 currentStep += 1
-            }
-            else {
-                
+            } else {
                 messages.append(Message(text: ": 이해를 못했어요. 코디, 코디추천해줘 같이 말해주세요.", isUser: false, images: nil))
-                //currentStep = 0
             }
         case 1:
             messages.append(Message(text: ": 누구랑 가나요?", isUser: false, images: nil))
@@ -204,18 +236,16 @@ class LipsOOTDChatBotViewController: UIViewController, UITableViewDataSource, UI
         }
     }
 }
-
-// 테이블 뷰 셀
+// 테이블뷰 관련한 클래스
 class ChatCell: UITableViewCell {
+    //말그대로 메세지라벨
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        
-        //label.backgroundColor = .red
         return label
     }()
-    
+    //이건 봇 캐릭터 이미지 넣어주기위한 이미지뷰
     private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -224,7 +254,7 @@ class ChatCell: UITableViewCell {
         imageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return imageView
     }()
-    
+    //이게 이미지 3개 가로로 보여주기 위해서
     private lazy var imageStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -232,11 +262,9 @@ class ChatCell: UITableViewCell {
         stackView.spacing = 0
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        //stackView.backgroundColor = .blue
-        //stackView.isHidden = true
         return stackView
     }()
-    
+    //레이아웃
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(characterImageView)
@@ -244,13 +272,11 @@ class ChatCell: UITableViewCell {
         contentView.addSubview(imageStackView)
         
         NSLayoutConstraint.activate([
-            
             characterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             characterImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             characterImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8),
             
             messageLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            //            messageLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             messageLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: 8),
             messageLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
@@ -260,17 +286,16 @@ class ChatCell: UITableViewCell {
             imageStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
-    // 필요하대서넣음
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // 조건에 따라 셀 처리
+    //봇과 유저를 구분하기위한 로직
     func cellCondition(with message: LipsOOTDChatBotViewController.Message) {
         messageLabel.text = message.text
         imageStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
-        //isuser가 true 일경우에 메세지 오른쪽 정렬
         if message.isUser {
             messageLabel.textAlignment = .right
             messageLabel.textColor = .blue
@@ -279,12 +304,9 @@ class ChatCell: UITableViewCell {
             messageLabel.textAlignment = .left
             messageLabel.textColor = .black
             characterImageView.isHidden = false
-                       
             characterImageView.image = UIImage(named: "chatbot2")
-            //messageLabel.text = " : 채팅을 입력해주세오"
             if let images = message.images {
                 for image in images {
-                    
                     let imageView = UIImageView(image: image)
                     imageView.contentMode = .scaleAspectFit
                     imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -294,6 +316,8 @@ class ChatCell: UITableViewCell {
         }
     }
 }
-#Preview{
+
+#Preview {
     LipsOOTDChatBotViewController()
 }
+
