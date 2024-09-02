@@ -13,6 +13,9 @@ class OOTDDetailesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        // 상세 페이지에서는 네비게이션 바를 보이도록 설정
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.tintColor = .darkGray
     }
 
     // 하트가 버튼 + 클릭 동작 확인
