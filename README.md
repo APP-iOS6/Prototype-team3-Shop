@@ -166,7 +166,7 @@
 |--------|----------------------------|-------------------------------|
 | 김원호 | 챗봇 관련 개발 및 OOTD 탭  | [KimLips](https://github.com/KimLips) |
 | 심현정 |                             | [Hyeonjeong-Sim](https://github.com/Hyeonjeong-Sim) |
-| 이다영 |                             | [dardardardardar](https://github.com/dardardardardar) |
+| 이다영 |  개발(시작화면, 테스트화면, 로그인 구성, 마이 탭, 상세페이지 뷰 구성,,,)     | [dardardardardar](https://github.com/dardardardardar) |
 | 홍지수 |      | [jisooohh](https://github.com/jisooohh) |
 
 
