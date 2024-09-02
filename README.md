@@ -61,10 +61,10 @@
    - **나의 옷장**
      - 내가 가지고 있는 아이템을 티디가 조합해서 스타일링해주고 화면에 보여줍니다.
      - 소유 중인 아이템의 목록을 보여주고 구매한 코디템을 추가할 수 있습니다.
-   - **나의 OOTP**
+   - **나의 OOTD**
      - #OOTD에 내가 오늘 입었던 코디를 공유할 수 있고, 내가 공유했던 OOTD를 확인할 수 있습니다.
   
-  ![ootdView](https://github.com/user-attachments/assets/5fce1f53-3b1d-4f81-bc3c-0277f5c3b3ef)
+![closetView](https://github.com/user-attachments/assets/d6712ec6-a470-4d42-b632-127869d9653f)
 
 ## 5. **마이**
    - 테스트 결과와 AI를 학습시킨 결과가 화면에 표시됩니다.
@@ -165,7 +165,7 @@
 | 이름   | 역할                       | GitHub                        |
 |--------|----------------------------|-------------------------------|
 | 김원호 | 챗봇 관련 개발 및 OOTD 탭  | [KimLips](https://github.com/KimLips) |
-| 심현정 |                             | [Hyeonjeong-Sim](https://github.com/Hyeonjeong-Sim) |
+| 심현정 |  개발(시작화면, 테스트화면, 로그인 구성, 옷장 탭, 로고디자인,,,)     | [Hyeonjeong-Sim](https://github.com/Hyeonjeong-Sim) |
 | 이다영 |  개발(시작화면, 테스트화면, 로그인 구성, 마이 탭, 상세페이지 뷰 구성,,,)     | [dardardardardar](https://github.com/dardardardardar) |
 | 홍지수 |      | [jisooohh](https://github.com/jisooohh) |
 
